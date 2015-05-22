@@ -3,11 +3,13 @@
 node_modules/
 log/
 tags
+*.gem
 *.gif
 *.gz
 *.jpeg
 *.log
 *.png
+*.svg
 *.swf
 *.zip
 
