@@ -188,9 +188,9 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 
 " Folding open/close
-nnoremap <Space>fo zo
-nnoremap <Space>foo zO
-nnoremap <Space>fc zc
+nnoremap ,fo zo
+nnoremap ,foo zO
+nnoremap ,fc zc
 
 " Exit insert mode
 inoremap <silent> jj <ESC>
@@ -202,7 +202,7 @@ nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 
 " Prev tag
-nnoremap <Space>t <C-t>
+nnoremap ,t <C-t>
 
 " Edit .vimrc
 nnoremap <silent> ,v :<C-u>edit $MYVIMRC<CR>
@@ -320,9 +320,12 @@ if neobundle#tap('ctrlp.vim')
   let g:ctrlp_working_path_mode = 'ra'
   let g:ctrlp_use_caching = 1
   let g:ctrlp_clear_cache_on_exit = 0
+  let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_prompt_mappings = {
-    \ 'PrtCurRight()':   ['<right>'],
-    \ 'PrtClearCache()': ['<c-l>'],
+    \   'PrtBS()': ['<bs>'],
+    \   'PrtCurLeft()': ['<left>'],
+    \   'PrtCurRight()': ['<right>'],
+    \   'PrtClearCache()': ['<c-l>'],
     \ }
 
   let g:ctrlp_mruf_max = 300
@@ -349,7 +352,7 @@ endif
 " reversal.vim {{{
 if neobundle#tap('reversal.vim')
   " Switch buffer to pair file.
-  nmap <Space>w <Plug>(reversal:switch_buffer)
+  nmap ,w <Plug>(reversal:switch_buffer)
 
   call neobundle#untap()
 endif
@@ -373,11 +376,21 @@ endif
 
 " caw.vim {{{
 if neobundle#tap('caw.vim')
-  " <Space>c: commentout
-  nmap <Space>c <Plug>(caw:i:toggle)
-  vmap <Space>c <Plug>(caw:i:toggle)
+  " ,c: commentout
+  nmap ,c <Plug>(caw:i:toggle)
+  vmap ,c <Plug>(caw:i:toggle)
 
   call neobundle#untap()
+endif
+" }}}
+
+" vim-fugitive {{{
+if neobundle#tap('vim-fugitive')
+  nnoremap [git] <Nop>
+  nmap ,g [git]
+
+  nnoremap [git]d :<C-u>Gdiff<CR>
+  nnoremap [git]b :<C-u>Gblame<CR>
 endif
 " }}}
 
