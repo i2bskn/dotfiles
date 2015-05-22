@@ -1,0 +1,15 @@
+{
+    "Keymap": {
+        "C-p": "peco.SelectUp",
+        "C-n": "peco.SelectDown",
+        "C-c": "peco.Cancel"
+    },
+    "Style": {
+        "Basic": ["on_default", "default"],
+        "Selected": ["bold", "on_blue", "default"],
+        "Query": ["default", "bold"],
+        "Matched": ["cyan", "on_default"]
+    },
+    "Prompt": "[peco]"
+}
+

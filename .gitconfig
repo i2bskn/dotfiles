@@ -1,0 +1,94 @@
+[user]
+  name = i2bskn
+  email = i2bskn@gmail.com
+
+[core]
+  editor = vim
+  pager = less
+  excludesfile = ~/.gitignore.global
+  autocrlf = input
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[merge]
+  ff = false
+  tool = vimdiff
+
+[push]
+  default = upstream
+
+[fetch]
+  prune = true
+
+[pull]
+  rebase = true
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = cyan
+
+[alias]
+  st = status -sb
+  cl = clone --recursive
+  gr = grep -n
+
+  # fetch (with prune) / pull / push
+  fo = fetch origin
+  fm = pull # with rebase
+  p = push
+  pt = push --tags
+
+  # branch
+  br = branch -vv
+  ba = branch -a
+
+  # checkout
+  co = checkout
+  co0 = checkout HEAD --
+  cb = checkout -b
+
+  # merge / rebase
+  m = merge
+  r = rebase
+  ra = rebase --abort
+  rc = rebase --continue
+  ri = rebase -i
+
+  # commit
+  a = add
+  aa = add --all
+  ci = commit -a
+  ca = commit -a --amend
+
+  # diff
+  d = diff
+  dh = diff HEAD
+  ds = diff --cached # staged changes
+
+  # log
+  lg = log --pretty=oneline --abbrev-commit --graph --decorate
+  ls = log --stat
+  lp = log -p
+  lm = log --merges
+  rl = reflog
+
+[include]
+  path = ~/.gitconfig.local
+
+[init]
+  templatedir = ~/.git_template
+

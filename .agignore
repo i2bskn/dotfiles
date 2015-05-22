@@ -1,0 +1,13 @@
+.vim/bundle/
+.git/
+node_modules/
+log/
+tags
+*.gif
+*.gz
+*.jpeg
+*.log
+*.png
+*.swf
+*.zip
+
