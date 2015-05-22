@@ -43,7 +43,8 @@
 
 [alias]
   st = status -sb
-  cl = clone --recursive
+  cl = clone
+  clr = clone --recursive
   gr = grep -n
 
   # fetch (with prune) / pull / push
