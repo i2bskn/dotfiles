@@ -11,7 +11,7 @@ filetype off
 filetype plugin indent off
 
 " Neobundle {{{
-" Install neobundle (if neobundle not installed)
+" Install neobundle if neobundle not installed.
 if ! isdirectory(expand('~/.vim/bundle'))
   echon 'Installing neobundle.vim...'
   silent call mkdir(expand('~/.vim/bundle'), 'p')
@@ -210,17 +210,17 @@ nnoremap <silent> ,r :<C-u>source $MYVIMRC<CR>
 " }}}
 
 " Misc {{{
-" Not comment on the new line
-augroup NotCommentNewLine
-  autocmd!
-  autocmd FileType * setlocal formatoptions-=ro
-augroup END
-
 " matchit {{{
 " %: Jump to brace corresponding
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif " }}}
+
+" Not comment on the new line {{{
+augroup NotCommentNewLine
+  autocmd!
+  autocmd FileType * setlocal formatoptions-=ro
+augroup END " }}}
 
 " To executable {{{
 if executable('chmod')
@@ -233,7 +233,7 @@ if executable('chmod')
 
   augroup AddPermission
     autocmd!
-    autocmd BufWritePost * call s:add_permission()
+    autocmd BufWritePost * call <SID>add_permission()
   augroup END
 endif " }}}
 " }}}
@@ -314,48 +314,101 @@ endif
 " }}}
 
 " ctrlp.vim {{{
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
-let g:ctrlp_switch_buffer = 'Et'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtCurRight()':   ['<right>'],
-  \ 'PrtClearCache()': ['<c-l>'],
-  \ }
+if neobundle#tap('ctrlp.vim')
+  let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+  let g:ctrlp_switch_buffer = 'Et'
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_use_caching = 1
+  let g:ctrlp_clear_cache_on_exit = 0
+  let g:ctrlp_prompt_mappings = {
+    \ 'PrtCurRight()':   ['<right>'],
+    \ 'PrtClearCache()': ['<c-l>'],
+    \ }
 
-let g:ctrlp_mruf_max = 300
+  let g:ctrlp_mruf_max = 300
 
-nnoremap <silent> <C-n> :<C-u>CtrlPBuffer<CR>
-nnoremap <silent> <C-m> :<C-u>CtrlPMRUFiles<CR>
+  " Buffer
+  nnoremap <silent> <C-n> :<C-u>CtrlPBuffer<CR>
+  " MRU
+  nnoremap <silent> <C-m> :<C-u>CtrlPMRUFiles<CR>
+
+  call neobundle#untap()
+endif
 " }}}
 
 " nerdtree {{{
-let g:NERDTreeShowHidden = 1
+if neobundle#tap('nerdtree')
+  let g:NERDTreeShowHidden = 1
 
-nnoremap <silent> <C-l> :<C-u>NERDTreeToggle<CR>
+  nnoremap <silent> <C-l> :<C-u>NERDTreeToggle<CR>
+
+  call neobundle#untap()
+endif
 " }}}
 
 " reversal.vim {{{
-nmap <Space>w <Plug>(reversal:switch_buffer)
+if neobundle#tap('reversal.vim')
+  " Switch buffer to pair file.
+  nmap <Space>w <Plug>(reversal:switch_buffer)
+
+  call neobundle#untap()
+endif
 " }}}
 
 " vim-indent-guides {{{
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
+if neobundle#tap('vim-indent-guides')
+  let g:indent_guides_auto_colors = 0
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_enable_on_vim_startup = 1
 
-augroup MyIndentGuides
-  autocmd!
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=240
-augroup END
+  augroup MyIndentGuides
+    autocmd!
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=240
+  augroup END
+
+  call neobundle#untap()
+endif
 " }}}
 
 " caw.vim {{{
-" <Space>c: commentout
-nmap <Space>c <Plug>(caw:i:toggle)
-vmap <Space>c <Plug>(caw:i:toggle)
+if neobundle#tap('caw.vim')
+  " <Space>c: commentout
+  nmap <Space>c <Plug>(caw:i:toggle)
+  vmap <Space>c <Plug>(caw:i:toggle)
+
+  call neobundle#untap()
+endif
+" }}}
+
+" lightline.vim {{{
+if neobundle#tap('lightline.vim')
+  function! GitBranchName() " {{{
+    try
+      if exists('*fugitive#head')
+        let _ = fugitive#head()
+        return strlen(_) ? _ : ''
+      endif
+    catch
+    endtry
+    return ''
+  endfunction " }}}
+
+  let g:lightline = {
+    \   'colorscheme': 'jellybeans',
+    \   'active': {
+    \     'left': [
+    \       ['mode', 'paste'],
+    \       ['git_branch_name', 'readonly', 'filename', 'modified']
+    \     ]
+    \   },
+    \   'component_function': {
+    \     'git_branch_name': 'GitBranchName'
+    \   }
+    \ }
+
+  call neobundle#untap()
+endif
 " }}}
 
 " Colorscheme {{{
@@ -366,34 +419,8 @@ if stridx($TERM, "256color") >= 0
   colorscheme jellybeans
 else
   set t_Co=16
-  colorscheme desert
+  colorscheme default
 endif
-" }}}
-
-" lightline.vim {{{
-function! GitBranchName() " {{{
-  try
-    if exists('*fugitive#head')
-      let _ = fugitive#head()
-      return strlen(_) ? _ : ''
-    endif
-  catch
-  endtry
-  return ''
-endfunction " }}}
-
-let g:lightline = {
-  \   'colorscheme': 'jellybeans',
-  \   'active': {
-  \     'left': [
-  \       ['mode', 'paste'],
-  \       ['git_branch_name', 'readonly', 'filename', 'modified']
-  \     ]
-  \   },
-  \   'component_function': {
-  \     'git_branch_name': 'GitBranchName'
-  \   }
-  \ }
 " }}}
 
 " Local settings
