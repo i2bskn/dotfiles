@@ -20,6 +20,12 @@ set mouse-scroll = 5
 # Diff
 set diff-options = -m --first-parent
 
-# Move page
+# Keymap
 bind generic <C-F> move-page-down
 bind generic <C-B> move-page-up
+bind generic <C-j> next
+bind generic <C-k> previous
+bind main g move-first-line
+bind main G move-last-line
+bind diff g move-first-line
+bind diff G move-last-line
