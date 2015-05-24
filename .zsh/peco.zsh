@@ -5,8 +5,7 @@ if which peco &> /dev/null; then
     (which gtac &> /dev/null && tac="gtac") || \
       (which tac &> /dev/null && tac="tac") || \
       tac="tail -r"
-    BUFFER=$(fc -l -n 1 | eval $tac | \
-      peco layout=bottom-up --query "$LBUFFER")
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle -R -c
   }
@@ -35,7 +34,7 @@ if which peco &> /dev/null; then
   alias mod="peco_select_open_modified_file"
 
   # Change directory to ruby gem
-  function peco_select_cd_gems() {
+  function peco_select_gems() {
     local available_cmd='Bundler::SharedHelpers.send(:find_gemfile)'
     local gemslist_cmd='Bundler.load.specs.sort_by{|s|s.name}.each{|s|puts s.full_gem_path}'
     local gem=$(ruby -r bundler -e "$available_cmd && $gemslist_cmd" | peco)
@@ -44,17 +43,18 @@ if which peco &> /dev/null; then
       cd $gem
     fi
   }
-  alias gems="peco_select_cd_gems"
+  alias gems="peco_select_gems"
 
-  function peco_select_repos() {
-    local repo=$(ghq list --full-path | peco)
+  if which ghq > /dev/null 2>&1; then
+    function peco_select_repos() {
+      local repo=$(ghq list --full-path | peco)
 
-    if [ -n "$repo" ]; then
-      cd $repo
-    fi
-  }
-  alias repos="peco_select_repos"
+      if [ -n "$repo" ]; then
+        cd $repo
+      fi
+    }
+    alias repos="peco_select_repos"
+  fi
 
   alias -g P="| peco"
 fi
-
