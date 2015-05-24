@@ -1,7 +1,10 @@
 {
     "Keymap": {
-        "C-p": "peco.SelectUp",
-        "C-n": "peco.SelectDown",
+        "C-k": "peco.SelectUp",
+        "C-j": "peco.SelectDown",
+        "C-f": "peco.ScrollPageDown",
+        "C-b": "peco.ScrollPageUp",
+        "C-u": "peco.DeleteAll",
         "C-c": "peco.Cancel"
     },
     "Style": {
@@ -12,4 +15,3 @@
     },
     "Prompt": "[peco]"
 }
-
