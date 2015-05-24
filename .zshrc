@@ -131,3 +131,7 @@ if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
+# zcompile
+if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
+  zcompile $HOME/.zshrc
+fi
