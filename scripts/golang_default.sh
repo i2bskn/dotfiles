@@ -2,6 +2,7 @@
 
 # Golang default install libraries.
 # - github.com/nfs/gocode => golang completion
+# - github.com/golang/lint/golint => linter for golang
 # - github.com/codegangsta/cli => utilities for command line application
 
 set -e
@@ -13,5 +14,6 @@ fi
 
 # Install packages
 go get -u github.com/nsf/gocode
+go get -u github.com/golang/lint/golint
 go get -u github.com/codegangsta/cli
 

@@ -75,10 +75,13 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
-NeoBundle 'vim-jp/vim-go-extra'
+if executable('go')
+  NeoBundle 'vim-jp/vim-go-extra'
+endif
+
+NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
-NeoBundle 'plasticboy/vim-markdown'
 
 call neobundle#end()
 
@@ -397,6 +400,20 @@ endif
 " vim-markdown {{{
 if neobundle#tap('vim-markdown')
   let g:vim_markdown_folding_disabled = 1
+
+  call neobundle#untap()
+endif
+" }}}
+
+" vim-go-extra {{{
+if neobundle#tap('vim-go-extra')
+  augroup Golang
+    autocmd!
+    autocmd BufWritePre *.go Fmt
+    if executable('golint')
+      autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+    endif
+  augroup END
 
   call neobundle#untap()
 endif
