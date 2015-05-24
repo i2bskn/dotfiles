@@ -87,6 +87,10 @@
   lm = log --merges
   rl = reflog
 
+[ghq]
+  root = ~/.ghq
+  root = ~/.go/src
+
 [include]
   path = ~/.gitconfig.local
 

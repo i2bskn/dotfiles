@@ -20,7 +20,7 @@ Clone repository and install homebrew packages and create symlinks.
 curl -fsSL http://git.io/A7IM | bash
 ```
 
-- Increase the priority of `/usr/local/bin` in `/etc/paths` for use latest packages.  
+- Increase the priority of `/usr/local/bin` in `/etc/paths` for use latest packages.
 - Change login shell to `zsh`.
     - Add `/usr/local/bin/zsh` to `/etc/shells`.
     - Execute `chpass -s /usr/local/bin/zsh`.

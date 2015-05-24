@@ -6,7 +6,7 @@ if which peco &> /dev/null; then
       (which tac &> /dev/null && tac="tac") || \
       tac="tail -r"
     BUFFER=$(fc -l -n 1 | eval $tac | \
-      peco --layout=bottom-up --query "$LBUFFER")
+      peco layout=bottom-up --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle -R -c
   }
@@ -32,7 +32,7 @@ if which peco &> /dev/null; then
       eval "$EDITOR $files"
     fi
   }
-  alias gmo="peco_select_open_modified_file"
+  alias mod="peco_select_open_modified_file"
 
   # Change directory to ruby gem
   function peco_select_cd_gems() {
@@ -45,6 +45,15 @@ if which peco &> /dev/null; then
     fi
   }
   alias gems="peco_select_cd_gems"
+
+  function peco_select_repos() {
+    local repo=$(ghq list --full-path | peco)
+
+    if [ -n "$repo" ]; then
+      cd $repo
+    fi
+  }
+  alias repos="peco_select_repos"
 
   alias -g P="| peco"
 fi

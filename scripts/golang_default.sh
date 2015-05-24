@@ -3,17 +3,25 @@
 # Golang default install libraries.
 # - github.com/nfs/gocode => golang completion
 # - github.com/golang/lint/golint => linter for golang
-# - github.com/codegangsta/cli => utilities for command line application
-
-set -e
+# - github.com/motemen/ghq => repository manager
 
 if ! which go > /dev/null 2>&1; then
-  echo "Not found: go"
+  echo "Not found: go" 1>&2
   exit 1
 fi
 
-# Install packages
-go get -u github.com/nsf/gocode
-go get -u github.com/golang/lint/golint
-go get -u github.com/codegangsta/cli
+if [ -z $GOPATH ]; then
+  echo 'Not found: $GOPATH' 1>&2
+  exit 1
+fi
 
+LIBRARIES=(
+  github.com/nsf/gocode
+  github.com/golang/lint/golint
+  github.com/motemen/ghq
+)
+
+for lib in ${LIBRARIES[@]}; do
+  echo "installing $lib"
+  go get -u $lib
+done
