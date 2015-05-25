@@ -158,7 +158,6 @@ set laststatus=2
 " Folding
 set foldmethod=marker
 set foldcolumn=2
-
 " }}}
 
 " Keymaps {{{
@@ -194,6 +193,10 @@ nnoremap g# g#zz
 nnoremap ,fo zo
 nnoremap ,foo zO
 nnoremap ,fc zc
+
+" Pastetoggle
+nnoremap <F2> :<C-u>set paste! paste?<CR>
+set pastetoggle=<F2>
 
 " Exit insert mode
 inoremap <silent> jj <ESC>
