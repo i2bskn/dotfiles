@@ -1,3 +1,6 @@
+# Perf
+# zmodload zsh/zprof && zprof
+
 # Keybind (Vim)
 bindkey -v
 
@@ -35,7 +38,7 @@ REPORTTIME=3
 
 # Complements {{{
 autoload -U compinit
-compinit
+compinit -C
 
 # Menu complements with tab barrage
 setopt auto_menu
@@ -135,3 +138,8 @@ fi
 if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
   zcompile $HOME/.zshrc
 fi
+
+# Perf
+# if (which zprof > /dev/null) ;then
+#   zprof | less
+# fi

@@ -8,12 +8,6 @@
 #   - `RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install 2.2.2`
 #   - `rbenv global 2.2.2`
 #
-# Install Node
-#   - `scripts/nvm_install.sh`
-#   - `nvm ls-remote`
-#   - `nvm install v0.12.2`
-#   - `nvm alias default v0.12.2`
-#
 # envfile for rails projects (Only rails projects)
 #   - `direnv edit` => Add `export PATH=$PWD/bin:$PATH`
 #

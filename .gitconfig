@@ -89,7 +89,7 @@
 
 [ghq]
   root = ~/.ghq
-  root = ~/.go/src
+  root = ~/go/src
 
 [include]
   path = ~/.gitconfig.local
