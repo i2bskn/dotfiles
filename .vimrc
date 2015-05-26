@@ -189,17 +189,12 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" Folding open/close
-nnoremap ,fo zo
-nnoremap ,foo zO
-nnoremap ,fc zc
+" Folding toggle
+nnoremap ,f za
 
 " Pastetoggle
 nnoremap <F2> :<C-u>set paste! paste?<CR>
 set pastetoggle=<F2>
-
-" Exit insert mode
-inoremap <silent> jj <ESC>
 
 " Cancel highlights of search result
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
@@ -213,6 +208,10 @@ nnoremap ,t <C-t>
 " Edit .vimrc
 nnoremap <silent> ,v :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> ,r :<C-u>source $MYVIMRC<CR>
+
+" Prevent erroneous operations
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
 " }}}
 
 " Misc {{{
