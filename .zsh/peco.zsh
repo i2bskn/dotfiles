@@ -24,7 +24,7 @@ if which peco &> /dev/null; then
       zle clear-screen
     }
     zle -N peco_select_src
-    bindkey '^p' peco_select_src
+    bindkey '^]' peco_select_src
   fi
 
   # SSH

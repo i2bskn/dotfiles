@@ -320,6 +320,7 @@ endif
 
 " ctrlp.vim {{{
 if neobundle#tap('ctrlp.vim')
+  let g:ctrlp_map = '<Nop>'
   let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
   let g:ctrlp_switch_buffer = 'Et'
   let g:ctrlp_working_path_mode = 'ra'
@@ -335,10 +336,20 @@ if neobundle#tap('ctrlp.vim')
 
   let g:ctrlp_mruf_max = 300
 
+  nnoremap [ctrlp] <Nop>
+  nnoremap s <Nop>
+  nmap s [ctrlp]
+
+  " File
+  nnoremap <silent> [ctrlp]p :<C-u>CtrlP<CR>
   " Buffer
-  nnoremap <silent> <C-n> :<C-u>CtrlPBuffer<CR>
+  nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
   " MRU
-  nnoremap <silent> <C-m> :<C-u>CtrlPMRUFiles<CR>
+  nnoremap <silent> [ctrlp]m :<C-u>CtrlPMRUFiles<CR>
+  " Tag
+  nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
+  " Dir
+  nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
 
   call neobundle#untap()
 endif
