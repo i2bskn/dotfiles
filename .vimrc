@@ -68,6 +68,7 @@ endif
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'i2bskn/reversal.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'
@@ -203,6 +204,7 @@ nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 
 " Prev tag
+nnoremap <C-t> <Nop>
 nnoremap ,t <C-t>
 
 " Edit .vimrc
@@ -320,7 +322,6 @@ endif
 
 " ctrlp.vim {{{
 if neobundle#tap('ctrlp.vim')
-  let g:ctrlp_map = '<Nop>'
   let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
   let g:ctrlp_switch_buffer = 'Et'
   let g:ctrlp_working_path_mode = 'ra'
@@ -337,11 +338,9 @@ if neobundle#tap('ctrlp.vim')
   let g:ctrlp_mruf_max = 300
 
   nnoremap [ctrlp] <Nop>
-  nnoremap s <Nop>
-  nmap s [ctrlp]
+  nnoremap m <Nop>
+  nmap m [ctrlp]
 
-  " File
-  nnoremap <silent> [ctrlp]p :<C-u>CtrlP<CR>
   " Buffer
   nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
   " MRU
@@ -369,6 +368,19 @@ endif
 if neobundle#tap('reversal.vim')
   " Switch buffer to pair file.
   nmap ,w <Plug>(reversal:switch_buffer)
+
+  call neobundle#untap()
+endif
+" }}}
+
+" vim-easymotion {{{
+if neobundle#tap('vim-easymotion')
+  let g:EasyMotion_do_mapping = 0
+  " Jump to first match with enter
+  let g:EasyMotion_enter_jump_first = 1
+
+  nnoremap s <Nop>
+  nmap s <Plug>(easymotion-s2)
 
   call neobundle#untap()
 endif
