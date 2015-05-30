@@ -53,13 +53,17 @@ NeoBundle 'Shougo/vimproc', {
   \ }
 
 if has('lua')
-  NeoBundleLazy 'Shougo/neocomplete', {
+  NeoBundle 'Shougo/neocomplete', {
     \   'depends' : 'Shougo/vimproc',
     \ }
 endif
 
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
+
+NeoBundle 'i2bskn/ctrlp-altered', {
+  \   'depends' : 'ctrlpvim/ctrlp.vim',
+  \ }
 
 if executable('ag')
   NeoBundle 'rking/ag.vim'
@@ -337,6 +341,8 @@ if neobundle#tap('ctrlp.vim')
 
   let g:ctrlp_mruf_max = 300
 
+  let g:ctrlp_altered_commit_size = 5
+
   nnoremap [ctrlp] <Nop>
   nnoremap m <Nop>
   nmap m [ctrlp]
@@ -349,6 +355,8 @@ if neobundle#tap('ctrlp.vim')
   nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
   " Dir
   nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
+  " Altered
+  nnoremap <silent> [ctrlp]a :<C-u>CtrlPAltered<CR>
 
   call neobundle#untap()
 endif
@@ -366,6 +374,11 @@ endif
 
 " reversal.vim {{{
 if neobundle#tap('reversal.vim')
+  let g:reversal_get_root_command = 'git rev-parse --show-toplevel'
+  let g:reversal_namespace_delimiter = {
+    \   'vim': '-',
+    \ }
+
   " Switch buffer to pair file.
   nmap ,w <Plug>(reversal:switch_buffer)
 
