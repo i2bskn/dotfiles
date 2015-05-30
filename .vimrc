@@ -445,12 +445,9 @@ endif
 
 " vim-go-extra {{{
 if neobundle#tap('vim-go-extra')
-  augroup Golang
+  augroup GolangSettings
     autocmd!
     autocmd BufWritePre *.go Fmt
-    if executable('golint')
-      autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
-    endif
   augroup END
 
   call neobundle#untap()
