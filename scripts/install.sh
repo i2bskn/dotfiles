@@ -60,4 +60,3 @@ if [ ENV["ONLY_CLONE"] == "" ]; then
   # Setup dotfiles
   rake setup
 fi
-

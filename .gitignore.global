@@ -4,6 +4,4 @@
 *.log
 *.sqlite
 .DS_Store
-tags
 .envrc
-

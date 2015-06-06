@@ -58,4 +58,3 @@ if ! which rbenv > /dev/null 2>&1; then
   echo 'eval "$(rbenv init -)"'
   echo "----- end -----"
 fi
-

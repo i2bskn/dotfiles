@@ -65,4 +65,3 @@ end
 def osx?
   RUBY_PLATFORM.downcase.include?("darwin")
 end
-

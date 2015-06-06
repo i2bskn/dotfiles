@@ -9,6 +9,7 @@ brew "caskroom/cask/brew-cask"
 # Packages
 brew "autoconf"
 brew "jemalloc"
+brew "libyaml"
 brew "lua"
 brew "openssl"
 brew "pkg-config"
@@ -36,4 +37,3 @@ brew "zsh-completions"
 cask "google-chrome"
 cask "google-japanese-ime"
 cask "iterm2"
-
