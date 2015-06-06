@@ -27,6 +27,19 @@ if which peco &> /dev/null; then
     bindkey '^]' peco_select_src
   fi
 
+  # Issue of GitHub
+  # see https://github.com/i2bskn/github-issues
+  if which github-issues > /dev/null 2>&1; then
+    function peco_select_issue() {
+      local selected=$(github-issues | peco | awk '{print $2}')
+
+      if [ -n "$selected" ]; then
+        open $selected
+      fi
+    }
+    alias i="peco_select_issue"
+  fi
+
   # SSH
   function peco_select_ssh() {
     local hosts=$(grep -iE "^host[[:space:]]+[^*]" ~/.ssh/config | awk '{print $2}' | sort | peco)
