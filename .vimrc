@@ -65,6 +65,12 @@ NeoBundle 'i2bskn/ctrlp-altered', {
   \   'depends' : 'ctrlpvim/ctrlp.vim',
   \ }
 
+if executable('ghq')
+  NeoBundle 'mattn/ctrlp-ghq', {
+    \   'depends' : 'ctrlpvim/ctrlp.vim',
+    \ }
+endif
+
 if executable('ag')
   NeoBundle 'rking/ag.vim'
 endif
@@ -341,8 +347,6 @@ if neobundle#tap('ctrlp.vim')
 
   let g:ctrlp_mruf_max = 300
 
-  let g:ctrlp_altered_commit_size = 5
-
   nnoremap [ctrlp] <Nop>
   nnoremap m <Nop>
   nmap m [ctrlp]
@@ -355,8 +359,26 @@ if neobundle#tap('ctrlp.vim')
   nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
   " Dir
   nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
+
+  call neobundle#untap()
+endif
+" }}}
+
+" ctrlp-altered {{{
+if neobundle#tap('ctrlp-altered')
+  let g:ctrlp_altered_commit_size = 5
+
   " Altered
   nnoremap <silent> [ctrlp]a :<C-u>CtrlPAltered<CR>
+
+  call neobundle#untap()
+endif
+" }}}
+
+" ctrlp-ghq {{{
+if neobundle#tap('ctrlp-ghq')
+  " GHQ
+  nnoremap <silent> [ctrlp]g :<C-u>CtrlPGhq<CR>
 
   call neobundle#untap()
 endif
