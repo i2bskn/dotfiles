@@ -1,3 +1,6 @@
+# Not output coredump
+limit coredumpsize 0
+
 # umask
 umask 022
 
