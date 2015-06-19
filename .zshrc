@@ -1,7 +1,7 @@
 # Perf
 # zmodload zsh/zprof && zprof
 
-# Keybind (Vim)
+# Keymap (viins)
 bindkey -v
 
 # History file and size
@@ -15,11 +15,15 @@ setopt hist_ignore_all_dups
 setopt share_history
 # Ignore begin with a space
 setopt hist_ignore_space
+# Ignore function
+setopt hist_no_functions
 # Remove unnecessary space
 setopt hist_reduce_blanks
 # Ignore history command
 setopt hist_no_store
 
+# Depth of directory stack
+DIRSTACKSIZE=30
 # Change directory only path
 setopt auto_cd
 # Auto stack of source dir
@@ -27,6 +31,8 @@ setopt auto_cd
 setopt auto_pushd
 # Ignore duplicate pushd
 setopt pushd_ignore_dups
+# To `$HOME` when no argments specified
+setopt pushd_to_home
 # Find home directory if not exist in current directory
 cdpath=($HOME)
 
@@ -115,29 +121,113 @@ $RETCODE $ARROWS "
 prompt_setup
 # }}}
 
-umask 022
+# aliases {{{
+alias g="git"
+alias v="vim"
+alias t="tmux"
+alias ta="tmux a"
+alias tl="tmux ls"
 
-# zsh-completions
-if [ -d /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
+alias rm="rm -i"
+alias mv="mv -i"
+alias cp="cp -pi"
+alias mkdir="mkdir -p"
 
-# extensions
-if [ -d $HOME/.zsh ]; then
-  for ext in $HOME/.zsh/*.zsh; do
-    source $ext
-  done
+which less > /dev/null 2>&1 && alias -g L="| less"
+which ag > /dev/null 2>&1 && alias -g A="| ag"
+
+case "${OSTYPE}" in
+freebsd*|darwin*)
+  alias ls="ls -G"
+  ;;
+linux*)
+  alias ls="ls --color"
+  ;;
+esac
+# }}}
+
+# peco {{{
+if which peco &> /dev/null; then
+  # History search
+  function peco_select_history() {
+    local tac
+    (which gtac &> /dev/null && tac="gtac") || \
+      (which tac &> /dev/null && tac="tac") || \
+      tac="tail -r"
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle -R -c
+  }
+  zle -N peco_select_history
+  bindkey '^r' peco_select_history
+
+  # ghq
+  if which ghq > /dev/null 2>&1; then
+    function peco_select_src() {
+      local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+
+      if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+      fi
+      zle clear-screen
+    }
+    zle -N peco_select_src
+    bindkey '^]' peco_select_src
+  fi
+
+  # Issue of GitHub
+  # see https://github.com/i2bskn/github-issues
+  if which github-issues > /dev/null 2>&1; then
+    function peco_select_issue() {
+      local selected=$(github-issues | peco | awk '{print $2}')
+
+      if [ -n "$selected" ]; then
+        open $selected
+      fi
+    }
+    alias i="peco_select_issue"
+  fi
+
+  # SSH
+  function peco_select_ssh() {
+    local hosts=$(grep -iE "^host[[:space:]]+[^*]" ~/.ssh/config | awk '{print $2}' | sort | peco)
+
+    if [ -n "$hosts" ]; then
+      ssh $hosts
+    fi
+  }
+  alias s="peco_select_ssh"
+
+  alias -g P="| peco"
 fi
+# }}}
+
+# env {{{
+export LANG=ja_JP.UTF-8
+export GREP_OPTIONS="--binary-files=without-match --color=auto"
+which vim > /dev/null 2>&1 && export EDITOR=vim
+
+if which less > /dev/null 2>&1; then
+  export PAGER=less
+  export LESS="--LONG-PROMPT -R --ignore-case"
+fi
+# }}}
 
 # local settings
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
-# zcompile
+# zcompile {{{
+if [ $HOME/.zshenv -nt $HOME/.zshenv.zwc ]; then
+  zcompile $HOME/.zshenv
+fi
+
 if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
   zcompile $HOME/.zshrc
 fi
+# }}}
 
 # Perf
 # if (which zprof > /dev/null) ;then
