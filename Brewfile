@@ -22,6 +22,7 @@ brew "go", args: ["with-cc-common"]
 brew "gnu-time"
 brew "jq"
 brew "mariadb"
+brew "nkf"
 brew "node"
 brew "peco"
 brew "redis"
