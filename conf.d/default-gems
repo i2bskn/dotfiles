@@ -1,4 +1,5 @@
+benchmark-ips
 bundler
 pry
 pry-doc
-rubocop
+sass
