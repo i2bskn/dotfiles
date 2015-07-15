@@ -94,7 +94,7 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'wavded/vim-stylus'
+NeoBundle 'vim-scripts/vim-stylus'
 NeoBundle 'vim-scripts/nginx.vim'
 
 call neobundle#end()
