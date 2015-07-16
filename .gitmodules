@@ -1,0 +1,3 @@
+[submodule "conf.d/etc"]
+	path = conf.d/etc
+	url = git@github.com:i2bskn/etc.git
