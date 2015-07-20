@@ -8,6 +8,7 @@ brew "caskroom/cask/brew-cask"
 
 # Packages
 brew "autoconf"
+brew "cairo"
 brew "jemalloc"
 brew "libyaml"
 brew "lua"
