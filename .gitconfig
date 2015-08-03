@@ -75,6 +75,7 @@
   ra = rebase --abort
   rc = rebase --continue
   ri = rebase -i
+  cp = cherry-pick
 
   # commit
   a = add
