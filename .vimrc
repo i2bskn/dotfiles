@@ -227,6 +227,9 @@ nnoremap <silent> ,r :<C-u>source $MYVIMRC<CR>
 " Prevent erroneous operations
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
+
+" Terminate window
+nnoremap <silent> Q :<C-u>q<CR>
 " }}}
 
 " Misc {{{
@@ -455,8 +458,9 @@ if neobundle#tap('vim-fugitive')
   nnoremap [git] <Nop>
   nmap ,g [git]
 
-  nnoremap [git]d :<C-u>Gdiff<CR>
-  nnoremap [git]b :<C-u>Gblame<CR>
+  nnoremap <silent> [git]s :<C-u>Gstatus<CR>
+  nnoremap <silent> [git]d :<C-u>Gdiff<CR>
+  nnoremap <silent> [git]b :<C-u>Gblame<CR>
 endif
 " }}}
 
