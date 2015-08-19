@@ -19,6 +19,7 @@ brew "pkg-config"
 brew "ag"
 brew "ctags"
 brew "direnv"
+brew "ghq"
 brew "git"
 brew "go", args: ["with-cc-common"]
 brew "gnu-time"
