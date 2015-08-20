@@ -46,13 +46,13 @@
 [color "status"]
   added = green
   changed = yellow
-  untracked = cyan
+  untracked = red
 
 [alias]
-  st = status -sb
+  st = status --short --branch
   cl = clone
   clr = clone --recursive
-  gr = grep -n
+  gr = grep --line-number -I
 
   # fetch (with prune) / pull / push
   fo = fetch origin
