@@ -80,13 +80,15 @@
   # commit
   a = add
   aa = add --all
-  ci = commit -a
-  ca = commit -a --amend
+  ci = commit --all
+  ca = commit --amend
 
   # diff
   d = diff
+  dc = diff --cached
+  ds = diff --stat
+  dw = diff --color-words
   dh = diff HEAD
-  ds = diff --cached # staged changes
 
   # log
   lg = log --pretty=oneline --abbrev-commit --graph --decorate
