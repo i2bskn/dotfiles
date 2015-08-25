@@ -78,7 +78,6 @@ endif
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'i2bskn/reversal.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'
@@ -409,19 +408,6 @@ if neobundle#tap('reversal.vim')
 
   " Switch buffer to pair file.
   nmap ,w <Plug>(reversal:switch_buffer)
-
-  call neobundle#untap()
-endif
-" }}}
-
-" vim-easymotion {{{
-if neobundle#tap('vim-easymotion')
-  let g:EasyMotion_do_mapping = 0
-  " Jump to first match with enter
-  let g:EasyMotion_enter_jump_first = 1
-
-  nnoremap s <Nop>
-  nmap s <Plug>(easymotion-s2)
 
   call neobundle#untap()
 endif
