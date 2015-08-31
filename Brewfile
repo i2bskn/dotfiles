@@ -27,7 +27,7 @@ brew "jq"
 brew "mariadb"
 brew "nginx"
 brew "nkf"
-brew "node"
+brew "nodebrew"
 brew "peco"
 brew "redis", args: ["with-jemalloc"]
 brew "tig"

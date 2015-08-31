@@ -12,6 +12,11 @@ if [ -e $HOME/.rbenv  ]; then
   eval "$(rbenv init -)"
 fi
 
+# nodebrew
+if [ -d $HOME/.nodebrew ]; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
+
 # golang
 if [ -e $HOME/go ]; then
   export GOPATH=$HOME/go
