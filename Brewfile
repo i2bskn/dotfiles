@@ -29,6 +29,7 @@ brew "nginx"
 brew "nkf"
 brew "nodebrew"
 brew "peco"
+brew "pyenv"
 brew "redis", args: ["with-jemalloc"]
 brew "tig"
 brew "tmux"

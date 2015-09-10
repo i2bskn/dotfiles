@@ -12,6 +12,10 @@ if [ -e $HOME/.rbenv  ]; then
   eval "$(rbenv init -)"
 fi
 
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)";
+fi
+
 # nodebrew
 if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
