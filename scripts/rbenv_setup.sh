@@ -54,7 +54,7 @@ fi
 if ! which rbenv > /dev/null 2>&1; then
   echo -e "\033[31mMust be set following.\033[m"
   echo "----- start -----"
-  echo 'export PATH=$PATH:$HOME/.rbenv/bin'
+  echo 'export PATH=$HOME/.rbenv/bin:$PATH'
   echo 'eval "$(rbenv init -)"'
   echo "----- end -----"
 fi

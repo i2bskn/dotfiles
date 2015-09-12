@@ -7,13 +7,19 @@ umask 022
 typeset -U path fpath
 
 # rbenv
-if [ -e $HOME/.rbenv  ]; then
-  export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
+if [ -e $HOME/.rbenv ]; then
+  export PATH=$HOME/.rbenv/bin:$PATH
   eval "$(rbenv init -)"
 fi
 
-if which pyenv > /dev/null; then
-  eval "$(pyenv init -)";
+# pyenv
+if [ -e $HOME/.pyenv ]; then
+  export PYENV_ROOT=$HOME/.pyenv
+  export PATH=$PYENV_ROOT/bin:$PATH
+  eval "$(pyenv init -)"
+
+  # see https://github.com/yyuu/pyenv/issues/106
+  alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 fi
 
 # nodebrew
@@ -33,7 +39,7 @@ if [ -d /usr/local/share/zsh-completions ]; then
 fi
 
 # direnv
-if which direnv > /dev/null 2>&1; then
+if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 

@@ -3,13 +3,26 @@
 # Setting in after this script is execute.
 #
 # Install Ruby
-#   - `scripts/rbenv_install.sh`
-#   - `nvm install -l`
+#   - `scripts/rbenv_setup.sh` and `source .zshenv`
+#   - `rbenv install -l`
 #   - `RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install 2.2.2`
 #   - `rbenv global 2.2.2`
 #
 # envfile for rails projects (Only rails projects)
 #   - `direnv edit` => Add `export PATH=$PWD/bin:$PATH`
+#
+# Install Python
+#   - `scripts/pyenv_setup.sh` and `source .zshenv`
+#   - `pyenv install -l`
+#   - `pyenv install 3.4.3`
+#   - `pyenv global 3.4.3`
+#
+# Install Node.js
+#   - `scripts/nodebrew_setup.sh` and `source .zshenv`
+#   - `pyenv global system`
+#   - `nodebrew ls-remote`
+#   - `nodebrew install v0.12.7`
+#   - `nodebrew use v0.12.7`
 #
 
 set -e
