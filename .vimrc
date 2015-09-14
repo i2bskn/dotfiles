@@ -65,12 +65,6 @@ NeoBundle 'i2bskn/ctrlp-altered', {
   \   'depends' : 'ctrlpvim/ctrlp.vim',
   \ }
 
-if executable('ghq')
-  NeoBundle 'mattn/ctrlp-ghq', {
-    \   'depends' : 'ctrlpvim/ctrlp.vim',
-    \ }
-endif
-
 if executable('ag')
   NeoBundle 'rking/ag.vim'
 endif
@@ -375,15 +369,6 @@ if neobundle#tap('ctrlp-altered')
 
   " Altered
   nnoremap <silent> [ctrlp]a :<C-u>CtrlPAltered<CR>
-
-  call neobundle#untap()
-endif
-" }}}
-
-" ctrlp-ghq {{{
-if neobundle#tap('ctrlp-ghq')
-  " GHQ
-  nnoremap <silent> [ctrlp]g :<C-u>CtrlPGhq<CR>
 
   call neobundle#untap()
 endif
