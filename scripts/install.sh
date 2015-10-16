@@ -65,6 +65,7 @@ if [ ENV["ONLY_CLONE"] == "" ]; then
     brew update
     brew tap Homebrew/bundle
     brew bundle
+    brew linkapps macvim
 
     # Install fonts
     rake fonts_install

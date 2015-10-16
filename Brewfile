@@ -3,6 +3,7 @@
 # see https://github.com/Homebrew/homebrew-bundle
 
 # taps
+tap "homebrew/versions"
 tap "caskroom/versions"
 
 # brew-cask
@@ -36,6 +37,7 @@ brew "git"
 brew "gnu-time"
 brew "httpie"
 brew "jq"
+brew "macvim", args: ["with-lua"]
 brew "mecab"
 brew "mecab-ipadic"
 brew "nkf"
@@ -50,6 +52,7 @@ brew "zsh"
 brew "zsh-completions"
 
 # .dmg
+cask "appcleaner"
 cask "google-chrome"
 cask "google-japanese-ime"
 cask "imageoptim"

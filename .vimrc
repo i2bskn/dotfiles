@@ -52,22 +52,12 @@ NeoBundle 'Shougo/vimproc', {
   \   },
   \ }
 
-if has('lua')
-  NeoBundle 'Shougo/neocomplete', {
-    \   'depends' : 'Shougo/vimproc',
-    \ }
-endif
-
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'scrooloose/nerdtree'
-
 NeoBundle 'i2bskn/ctrlp-altered', {
   \   'depends' : 'ctrlpvim/ctrlp.vim',
   \ }
 
-if executable('ag')
-  NeoBundle 'rking/ag.vim'
-endif
+NeoBundle 'scrooloose/nerdtree'
 
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -79,16 +69,26 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
-if executable('go')
-  NeoBundle 'vim-jp/vim-go-extra'
-endif
-
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'vim-scripts/vim-stylus'
 NeoBundle 'vim-scripts/nginx.vim'
+
+if has('lua')
+  NeoBundle 'Shougo/neocomplete', {
+    \   'depends' : 'Shougo/vimproc',
+    \ }
+endif
+
+if executable('ag')
+  NeoBundle 'rking/ag.vim'
+endif
+
+if executable('go')
+  NeoBundle 'vim-jp/vim-go-extra'
+endif
 
 call neobundle#end()
 
