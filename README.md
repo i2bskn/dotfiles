@@ -6,6 +6,8 @@ dotfiles for OSX and Linux.
 Requirements
 ------------
 
+#### OSX
+
 - Command Line Tools
     - Xcode install and execute `xcode-select --install`.
     - Execute `sudo xcodebuild -license` for agree to the license.
@@ -14,17 +16,74 @@ Requirements
 Installation
 ------------
 
-Clone repository and install homebrew packages and create symlinks.
+Clone repository and create symlinks.
 
 ```
-curl -fsSL http://git.io/A7IM | bash
+git clone --recursive git@github.com:i2bskn/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles
+./setup.sh
 ```
 
-- Increase the priority of `/usr/local/bin` in `/etc/paths` for use latest packages.
-- Change login shell to `zsh`.
-    - Add `/usr/local/bin/zsh` to `/etc/shells`.
-    - Execute `chpass -s /usr/local/bin/zsh`.
-- Apply settings to iTerm2.
-    - Setting `~/dotfiles/conf.d/iterm2` to `Load preferences from a custom folder or URL`.
-    - Restart iTerm2.
+#### Misc
 
+###### Packages install (OSX)
+
+```
+brew update
+brew tap Homebrew/bundle
+brew bundle
+brew linkapps macvim
+```
+
+Middleware config files in `conf.d/etcfiles`.
+
+###### Fonts
+
+1. Install by double-clicking the font files in `fonts`.
+
+###### Change login shell to Zsh
+
+1. Add `/usr/local/bin/zsh` to `/etc/shells`.
+1. Execute `chpass -s /usr/local/bin/zsh`.
+
+###### Apply settings to iTerm2
+
+1. Setting `~/dotfiles/conf.d/iterm2` to `Load preferences from a custom folder or URL`.
+1. Restart iTerm2.
+
+###### Install rbenv
+
+Example:
+
+```
+scripts/rbenv_setup.sh
+source ~/.zshenv
+rbenv install -l
+RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install 2.2.3
+rbenv global 2.2.3
+```
+
+###### Install pyenv
+
+Example:
+
+```
+scripts/pyenv_setup.sh
+source ~/.zshenv
+pyenv install -l
+pyenv install 3.5.0
+pyenv global 3.5.0
+```
+
+###### Install nodebrew
+
+Example:
+
+```
+scripts/nodebrew_setup.sh
+source ~/.zshenv
+pyenv global system
+nodebrew ls-remote
+nodebrew install v0.12.7
+nodebrew use v0.12.7
+```
