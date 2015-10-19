@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# Install Python
+#   - `scripts/pyenv_setup.sh` and `source .zshenv`
+#   - `pyenv install -l`
+#   - `pyenv install 3.4.3`
+#   - `pyenv global 3.4.3`
+#
 
 set -e
 

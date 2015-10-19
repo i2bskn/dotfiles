@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+# Install Node.js
+#   - `scripts/nodebrew_setup.sh` and `source .zshenv`
+#   - `pyenv global system`
+#   - `nodebrew ls-remote`
+#   - `nodebrew install v0.12.7`
+#   - `nodebrew use v0.12.7`
+#
 
 set -e
 

@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# Install Ruby
+#   - `scripts/rbenv_setup.sh` and `source .zshenv`
+#   - `rbenv install -l`
+#   - `RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install 2.2.3`
+#   - `rbenv global 2.2.3`
+#
 
 set -e
 

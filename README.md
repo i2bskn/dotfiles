@@ -28,6 +28,8 @@ cd $HOME/dotfiles
 
 ###### Packages install (OSX)
 
+Install with homebrew.
+
 ```
 brew update
 brew tap Homebrew/bundle
@@ -51,39 +53,6 @@ Middleware config files in `conf.d/etcfiles`.
 1. Setting `~/dotfiles/conf.d/iterm2` to `Load preferences from a custom folder or URL`.
 1. Restart iTerm2.
 
-###### Install rbenv
+###### Install version managers
 
-Example:
-
-```
-scripts/rbenv_setup.sh
-source ~/.zshenv
-rbenv install -l
-RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install 2.2.3
-rbenv global 2.2.3
-```
-
-###### Install pyenv
-
-Example:
-
-```
-scripts/pyenv_setup.sh
-source ~/.zshenv
-pyenv install -l
-pyenv install 3.5.0
-pyenv global 3.5.0
-```
-
-###### Install nodebrew
-
-Example:
-
-```
-scripts/nodebrew_setup.sh
-source ~/.zshenv
-pyenv global system
-nodebrew ls-remote
-nodebrew install v0.12.7
-nodebrew use v0.12.7
-```
+Execute setup script in `scripts`.
