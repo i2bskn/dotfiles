@@ -1,3 +1,0 @@
-[submodule "conf.d/etcfiles"]
-	path = conf.d/etcfiles
-	url = https://github.com/i2bskn/etcfiles.git

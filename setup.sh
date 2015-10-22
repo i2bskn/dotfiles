@@ -8,6 +8,7 @@ ln -sf $PWD/.gemrc $HOME/.gemrc
 ln -sfn $PWD/.git_template $HOME/.git_template
 ln -sf $PWD/.gitconfig $HOME/.gitconfig
 ln -sf $PWD/.gitignore.global $HOME/.gitignore.global
+ln -sf $PWD/.gvimrc $HOME/.gvimrc
 ln -sfn $PWD/.peco $HOME/.peco
 ln -sf $PWD/.pryrc $HOME/.pryrc
 ln -sf $PWD/.railsrc $HOME/.railsrc
