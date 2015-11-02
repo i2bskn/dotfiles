@@ -15,4 +15,3 @@ autocmd BufNewFile,BufRead *.cap,Capfile call s:setf('ruby')
 
 " Rubygems
 autocmd BufNewFile,BufRead .gemrc call s:setf('yaml')
-

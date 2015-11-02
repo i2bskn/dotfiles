@@ -21,7 +21,7 @@ Clone repository and create symlinks.
 ```
 git clone --recursive git@github.com:i2bskn/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
-./setup.sh
+make install
 ```
 
 #### Misc

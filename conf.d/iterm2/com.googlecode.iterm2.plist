@@ -325,17 +325,19 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>655 266 201 309 0 0 1440 878 </string>
+	<string>655 266 214 309 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>477 105 924 485 0 0 1440 878 </string>
+	<string>477 125 924 485 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 102 1440 776 0 0 1440 878 </string>
+	<string>0 101 1440 776 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>2169 134 1165 757 1440 -180 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>1991 -59 1165 757 1440 -180 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>2433 -157 710 1029 1440 -180 1920 1080 </string>
+	<key>NeverWarnAboutShortLivedSessions_21FE5903-C26A-48A6-9089-EA1FFB12080F</key>
+	<true/>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1071,6 +1073,10 @@
 			<string>/Users/iiboshiken</string>
 		</dict>
 	</array>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>453258467.90097398</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>467863301.20765102</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1133,11 +1139,11 @@
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/testing.xml</string>
+	<string>https://iterm2.com/appcasts/testing.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-02-25T00:56:05Z</date>
+	<date>2015-10-30T00:32:05Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20141022</string>
 	<key>SavePasteHistory</key>
@@ -1185,6 +1191,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.0.0.20141103</string>
+	<string>2.1.4</string>
 </dict>
 </plist>

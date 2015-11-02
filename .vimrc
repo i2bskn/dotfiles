@@ -232,6 +232,19 @@ if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif " }}}
 
+" FileType Settings {{{
+augroup FileTypeSettings
+  autocmd!
+  autocmd FileType c setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
+  autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
+  autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType php setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
+augroup END
+" }}}
+
 " Not comment on the new line {{{
 augroup NotCommentNewLine
   autocmd!

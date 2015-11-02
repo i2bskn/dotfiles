@@ -191,7 +191,7 @@ if which peco &> /dev/null; then
 
   # SSH
   function peco_select_ssh() {
-    local hosts=$(grep -iE "^host[[:space:]]+[^*]" ~/.ssh/config | awk '{print $2}' | sort | peco)
+    local hosts=$(grep -iE "^host[[:space:]]+[^*]" ~/.ssh/config | awk '{print $2}' | uniq | sort | peco)
 
     if [ -n "$hosts" ]; then
       ssh $hosts
