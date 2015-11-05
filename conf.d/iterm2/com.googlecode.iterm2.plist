@@ -268,7 +268,7 @@
 	<key>HideScrollbar</key>
 	<true/>
 	<key>HideTab</key>
-	<false/>
+	<true/>
 	<key>HighlightTabLabels</key>
 	<true/>
 	<key>HotKeyBookmark</key>
@@ -329,7 +329,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>477 125 924 485 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 101 1440 776 0 0 1440 877 </string>
+	<string>0 123 1440 754 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>2169 134 1165 757 1440 -180 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1076,7 +1076,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453258467.90097398</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>467863301.20765102</real>
+	<real>468379686.50713998</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1143,7 +1143,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-10-30T00:32:05Z</date>
+	<date>2015-11-05T03:45:20Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20141022</string>
 	<key>SavePasteHistory</key>
