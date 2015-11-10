@@ -23,8 +23,8 @@ brew "go"
 brew "lua"
 
 brew "elasticsearch"
-brew "mariadb"
 brew "memcached"
+brew "mysql"
 brew "nginx"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"

@@ -502,11 +502,15 @@ syntax enable
 
 if stridx($TERM, "256color") >= 0
   set t_Co=256
-  colorscheme jellybeans
 else
   set t_Co=16
-  colorscheme default
 endif
+
+try
+  colorscheme jellybeans
+catch
+  colorscheme desert
+endtry
 " }}}
 
 " Local settings
