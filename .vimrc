@@ -130,6 +130,8 @@ set autoindent
 
 " Backspace behavior
 set backspace=indent,eol,start
+" Not change the EOL
+set nofixeol
 " Minimum margin
 set scrolloff=5
 " Complements file name
