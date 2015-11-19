@@ -37,7 +37,6 @@ brew "git"
 brew "gnu-time"
 brew "httpie"
 brew "jq"
-brew "macvim", args: ["with-lua"]
 brew "mecab"
 brew "mecab-ipadic"
 brew "nkf"

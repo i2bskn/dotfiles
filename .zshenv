@@ -12,16 +12,6 @@ if [ -e $HOME/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
-# pyenv
-if [ -e $HOME/.pyenv ]; then
-  export PYENV_ROOT=$HOME/.pyenv
-  export PATH=$PYENV_ROOT/bin:$PATH
-  eval "$(pyenv init -)"
-
-  # see https://github.com/yyuu/pyenv/issues/106
-  alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
-fi
-
 # nodebrew
 if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH

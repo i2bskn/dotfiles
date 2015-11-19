@@ -240,7 +240,6 @@ augroup FileTypeSettings
   autocmd FileType c setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
   autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
   autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType php setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
@@ -326,7 +325,6 @@ if neobundle#tap('neocomplete')
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   augroup END
 
