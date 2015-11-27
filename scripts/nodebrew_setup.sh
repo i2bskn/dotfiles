@@ -3,8 +3,8 @@
 # Install Node.js
 #   - `scripts/nodebrew_setup.sh` and `source .zshenv`
 #   - `nodebrew ls-remote`
-#   - `nodebrew install v0.12.7`
-#   - `nodebrew use v0.12.7`
+#   - `nodebrew install v4.2.2`
+#   - `nodebrew use v4.2.2`
 #
 
 set -e

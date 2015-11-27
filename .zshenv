@@ -1,9 +1,6 @@
 # Not output coredump
 limit coredumpsize 0
 
-# umask
-umask 022
-
 typeset -U path fpath
 
 # rbenv
@@ -19,7 +16,7 @@ fi
 
 # golang
 if [ -e $HOME/go ]; then
-  export GOPATH=$HOME/go
+  export GOPATH=$HOME/ghq/go:$HOME/ghq
   export PATH=$PATH:$GOPATH/bin
 fi
 

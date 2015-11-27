@@ -460,7 +460,7 @@ endif
 if neobundle#tap('vim-go-extra')
   augroup GolangSettings
     autocmd!
-    autocmd BufWritePre *.go Fmt
+    autocmd FileType go autocmd BufWritePre <buffer> Fmt
   augroup END
 
   call neobundle#untap()
