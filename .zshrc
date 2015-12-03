@@ -42,7 +42,7 @@ setopt interactive_comments
 # 3 seconds or more consuming process displays information
 REPORTTIME=3
 
-# Complements {{{
+# complements {{{
 autoload -U compinit
 compinit -C
 
@@ -76,51 +76,6 @@ zstyle ':completion:*' format %F{226}'%d'%f
 zstyle ':completion:*' group-name ''
 # }}}
 
-# Prompt {{{
-autoload -Uz vcs_info
-
-zstyle ':vcs_info:*' formats '%s->(%b)'
-
-precmd() {
-  psvar=()
-  LANG=en_US.UTF-8 vcs_info
-  psvar[1]=$vcs_info_msg_0_
-}
-
-# Use escape sequence
-setopt prompt_subst
-function prompt_setup() {
-  if [[ $TERM =~ ".*256color.*" ]]; then
-    _prompt_colors=(
-      "%F{124}"
-      "%F{142}"
-      "%F{27}"
-      "%F{65}"
-      "%F{66}"
-    )
-  else
-    _prompt_colors=(
-      "%F{red}"
-      "%F{yellow}"
-      "%F{green}"
-      "%F{cyan}"
-      "%F{cyan}"
-    )
-  fi
-
-  local USER_HOST="${_prompt_colors[4]}%n@%m%f"
-  local CURRENT_DIR="${_prompt_colors[5]}%~%f"
-  local VCS_INFO="${_prompt_colors[3]}%1v%f"
-  local RETCODE="[%(?.${_prompt_colors[3]}.${_prompt_colors[1]})%?%f]"
-  local ARROWS="%B${_prompt_colors[1]}❯%f${_prompt_colors[2]}❯%f${_prompt_colors[3]}❯%f%b"
-
-PROMPT="$USER_HOST $CURRENT_DIR $VCS_INFO
-$RETCODE $ARROWS "
-}
-
-prompt_setup
-# }}}
-
 # aliases {{{
 alias g="git"
 alias v="vim"
@@ -146,63 +101,6 @@ linux*)
 esac
 # }}}
 
-# peco {{{
-if which peco &> /dev/null; then
-  # History search
-  function peco_select_history() {
-    local tac
-    (which gtac &> /dev/null && tac="gtac") || \
-      (which tac &> /dev/null && tac="tac") || \
-      tac="tail -r"
-    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle -R -c
-  }
-  zle -N peco_select_history
-  bindkey '^r' peco_select_history
-
-  # ghq
-  if which ghq > /dev/null 2>&1; then
-    function peco_select_src() {
-      local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
-
-      if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
-        zle accept-line
-      fi
-      zle clear-screen
-    }
-    zle -N peco_select_src
-    bindkey '^]' peco_select_src
-  fi
-
-  # Issue of GitHub
-  # see https://github.com/i2bskn/github-issues
-  if which github-issues > /dev/null 2>&1; then
-    function peco_select_issue() {
-      local selected=$(github-issues | peco | awk '{print $2}')
-
-      if [ -n "$selected" ]; then
-        open $selected
-      fi
-    }
-    alias i="peco_select_issue"
-  fi
-
-  # SSH
-  function peco_select_ssh() {
-    local hosts=$(grep -iE "^host[[:space:]]+[^*]" ~/.ssh/config | awk '{print $2}' | uniq | sort | peco)
-
-    if [ -n "$hosts" ]; then
-      ssh $hosts
-    fi
-  }
-  alias s="peco_select_ssh"
-
-  alias -g P="| peco"
-fi
-# }}}
-
 # env {{{
 export LANG=ja_JP.UTF-8
 export GREP_OPTIONS="--binary-files=without-match --color=auto"
@@ -214,20 +112,31 @@ if which less > /dev/null 2>&1; then
 fi
 # }}}
 
+# extensions and compile {{{
+function compile() {
+  src=$1
+  if [ -e ${src}.zwc ]; then
+    if [ ${src} -nt ${src}.zwc ]; then
+      zcompile ${src}
+    fi
+  else
+    zcompile ${src}
+  fi
+}
+
+for src in $(ls $HOME/.zsh/*.zsh); do
+  source $src
+  compile $src
+done
+
+compile $HOME/.zshenv
+compile $HOME/.zshrc
+# }}}
+
 # local settings
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
-
-# zcompile {{{
-if [ $HOME/.zshenv -nt $HOME/.zshenv.zwc ]; then
-  zcompile $HOME/.zshenv
-fi
-
-if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
-  zcompile $HOME/.zshrc
-fi
-# }}}
 
 # Perf
 # if (which zprof > /dev/null) ;then

@@ -15,9 +15,9 @@ if [ -d $HOME/.nodebrew ]; then
 fi
 
 # golang
-if [ -e $HOME/go ]; then
+if which go > /dev/null; then
   export GOPATH=$HOME/ghq/go:$HOME/ghq
-  export PATH=$PATH:$GOPATH/bin
+  export PATH=$PATH:$HOME/ghq/go/bin
 fi
 
 # zsh-completions
@@ -31,5 +31,4 @@ if which direnv > /dev/null; then
 fi
 
 # Utilities
-[ -d $HOME/dotfiles/bin ] && export PATH=$PATH:$HOME/dotfiles/bin
 [ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
