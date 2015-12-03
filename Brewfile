@@ -26,7 +26,6 @@ brew "docker"
 brew "docker-machine"
 brew "memcached"
 brew "mysql"
-brew "nginx"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
 

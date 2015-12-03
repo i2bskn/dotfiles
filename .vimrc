@@ -74,7 +74,6 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'vim-scripts/vim-stylus'
-NeoBundle 'vim-scripts/nginx.vim'
 
 if has('lua')
   NeoBundle 'Shougo/neocomplete', {
