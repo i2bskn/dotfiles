@@ -239,7 +239,7 @@ augroup FileTypeSettings
   autocmd FileType c setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
   autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
   autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType php setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
 augroup END
@@ -354,6 +354,9 @@ if neobundle#tap('ctrlp.vim')
     \   'PrtCurLeft()': ['<left>'],
     \   'PrtCurRight()': ['<right>'],
     \   'PrtClearCache()': ['<c-l>'],
+    \ }
+  let g:ctrlp_custom_ignore = {
+    \   'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]vendor$',
     \ }
 
   let g:ctrlp_mruf_max = 300
