@@ -27,16 +27,6 @@ if which peco &> /dev/null; then
     bindkey '^]' peco_select_src
   fi
 
-  function peco_select_branch() {
-    local selected=$(git branch | grep -v '^*' | awk '{print $1}' | peco --query "$LBUFFER")
-
-    if [ -n "$selected" ]; then
-        git checkout $selected
-    fi
-  }
-  zle -N peco_select_branch
-  bindkey '^b' peco_select_branch
-
   # Issue of GitHub
   # see https://github.com/i2bskn/github-issues
   if which github-issues > /dev/null 2>&1; then
@@ -60,5 +50,7 @@ if which peco &> /dev/null; then
   }
   alias s="peco_select_ssh"
 
+  # Aliases
   alias -g P="| peco"
+  alias -g B='`git branch | peco | sed -e "s/^\*[  ]*//g"`'
 fi
