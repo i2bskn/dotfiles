@@ -326,6 +326,8 @@
 	<array/>
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>655 266 214 309 0 0 1440 878 </string>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>331 37 445 77 0 0 1440 877 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>477 125 924 485 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -894,11 +896,11 @@
 			<key>Name</key>
 			<string>i2bskn</string>
 			<key>Non Ascii Font</key>
-			<string>RictyDiminished-Regular 13.5</string>
+			<string>RictyDiminished-Regular 14</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>RictyDiminished-Regular 13.5</string>
+			<string>RictyDiminished-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1076,7 +1078,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453258467.90097398</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>468379686.50713998</real>
+	<real>471492060.73460501</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1143,7 +1145,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-11-05T03:45:20Z</date>
+	<date>2015-12-11T01:52:22Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20141022</string>
 	<key>SavePasteHistory</key>

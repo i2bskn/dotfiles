@@ -19,7 +19,7 @@ Installation
 Clone repository and create symlinks.
 
 ```
-git clone --recursive git@github.com:i2bskn/dotfiles.git $HOME/dotfiles
+git clone git@github.com:i2bskn/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 make install
 ```
@@ -34,14 +34,9 @@ Install with homebrew.
 brew update
 brew tap Homebrew/bundle
 brew bundle
-brew linkapps macvim
 ```
 
-Middleware config files in `conf.d/etcfiles`.
-
-###### Fonts
-
-1. Install by double-clicking the font files in `fonts`.
+Middleware config files in `conf.d`.
 
 ###### Change login shell to Zsh
 
@@ -52,7 +47,3 @@ Middleware config files in `conf.d/etcfiles`.
 
 1. Setting `~/dotfiles/conf.d/iterm2` to `Load preferences from a custom folder or URL`.
 1. Restart iTerm2.
-
-###### Install version managers
-
-Execute setup script in `scripts`.
