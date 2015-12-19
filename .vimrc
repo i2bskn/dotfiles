@@ -74,6 +74,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'vim-scripts/vim-stylus'
+NeoBundle 'keith/swift.vim'
 
 if has('lua')
   NeoBundle 'Shougo/neocomplete', {
@@ -239,7 +240,7 @@ augroup FileTypeSettings
   autocmd FileType c setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
   autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
   autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType swift setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
 augroup END
@@ -360,6 +361,12 @@ if neobundle#tap('ctrlp.vim')
     \ }
 
   let g:ctrlp_mruf_max = 300
+
+  " Find with ag
+  if executable('ag')
+    let g:ctrlp_use_caching = 0
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
+  endif
 
   nnoremap [ctrlp] <Nop>
   nnoremap m <Nop>
