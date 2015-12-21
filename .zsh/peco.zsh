@@ -31,7 +31,11 @@ if which peco &> /dev/null; then
   # see https://github.com/i2bskn/github-issues
   if which github-issues > /dev/null 2>&1; then
     function peco_select_issue() {
-      local selected=$(github-issues | peco | awk '{print $2}')
+      if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        local selected=$(github-issues -current | peco | awk '{print $2}')
+      else
+        local selected=$(github-issues -self | peco | awk '{print $2}')
+      fi
 
       if [ -n "$selected" ]; then
         open $selected

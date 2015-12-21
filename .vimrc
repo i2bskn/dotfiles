@@ -362,12 +362,6 @@ if neobundle#tap('ctrlp.vim')
 
   let g:ctrlp_mruf_max = 300
 
-  " Find with ag
-  if executable('ag')
-    let g:ctrlp_use_caching = 0
-    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
-  endif
-
   nnoremap [ctrlp] <Nop>
   nnoremap m <Nop>
   nmap m [ctrlp]
