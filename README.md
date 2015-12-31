@@ -45,5 +45,7 @@ Middleware config files in `conf.d`.
 
 ###### Apply settings to iTerm2
 
+Need to install [RictyDiminished](https://github.com/yascentur/RictyDiminished) fonts before apply settings.
+
 1. Setting `~/dotfiles/conf.d/iterm2` to `Load preferences from a custom folder or URL`.
 1. Restart iTerm2.
