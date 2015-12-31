@@ -50,8 +50,6 @@ brew "zsh-completions"
 
 # .dmg
 cask "appcleaner"
-cask "google-chrome"
-cask "google-japanese-ime"
 cask "imageoptim"
 cask "iterm2"
 cask "java"
