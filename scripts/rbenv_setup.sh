@@ -42,12 +42,10 @@ if [ -d $plugin_dir ]; then
     git clone https://github.com/sstephenson/rbenv-default-gems.git $plugin_dir/rbenv-default-gems
   fi
 
-  default_gems_file=`dirname $0`/../conf.d/default-gems
-
-  if [ -f $default_gems_file ]; then
-    cp -fv $default_gems_file $install_path/default-gems
+  if [ -e $install_path/default-gems ]; then
+    echo "default-gems is already installed."
   else
-    touch $install_path/default-gems
+    curl -sSL https://raw.githubusercontent.com/i2bskn/config/master/misc/default-gems > $install_path/default-gems
   fi
 
   # update
