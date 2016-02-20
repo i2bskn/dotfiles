@@ -120,8 +120,8 @@ fi
 
 # golang
 if which go > /dev/null; then
-  export GOPATH=$HOME/ghq/go:$HOME/ghq
-  export PATH=$PATH:$HOME/ghq/go/bin
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOPATH/bin
 fi
 
 # zsh-completions

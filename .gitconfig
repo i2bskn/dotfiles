@@ -98,8 +98,7 @@
   rl = reflog
 
 [ghq]
-  root = ~/ghq/src
-  root = ~/ghq/go/src
+  root = ~/ghq
 
 [include]
   path = ~/.gitconfig.local
