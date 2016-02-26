@@ -113,9 +113,15 @@ if [ -e $HOME/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
-# nodebrew
-if [ -d $HOME/.nodebrew ]; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
+# pyenv
+if [ -e $HOME/.pyenv ]; then
+  export PATH=$HOME/.pyenv/bin:$PATH
+  eval "$(pyenv init -)"
+
+  if which brew > /dev/null 2>&1; then
+    # see https://github.com/yyuu/pyenv/issues/106
+    alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
+  fi
 fi
 
 # golang

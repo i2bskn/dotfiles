@@ -5,7 +5,7 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore.global
-  autocrlf = input
+  autocrlf = false
 
 [diff]
   tool = vimdiff
@@ -78,23 +78,21 @@
   cp = cherry-pick
 
   # commit
-  a = add
   aa = add --all
-  ci = commit --all
+  ci = commit
   ca = commit --amend
 
   # diff
   d = diff
   dc = diff --cached
-  ds = diff --stat
-  dw = diff --color-words
   dh = diff HEAD
+  ds = diff --stat
 
   # log
   lg = log --pretty=oneline --abbrev-commit --graph --decorate
-  ls = log --stat
+  lc = log --pretty=oneline --abbrev-commit --decorate --no-merges
+  lm = log --pretty=oneline --abbrev-commit --decorate --merges
   lp = log -p
-  lm = log --merges
   rl = reflog
 
 [ghq]

@@ -21,6 +21,7 @@ brew "readline"
 
 brew "go"
 brew "lua"
+brew "node"
 
 brew "docker"
 brew "docker-machine"
