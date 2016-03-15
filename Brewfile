@@ -11,6 +11,7 @@ brew "caskroom/cask/brew-cask"
 
 # Packages
 brew "autoconf"
+brew "automake"
 brew "cairo"
 brew "cmake"
 brew "jemalloc"
@@ -23,12 +24,13 @@ brew "go"
 brew "lua"
 brew "node"
 
-brew "docker"
-brew "docker-machine"
 brew "memcached"
 brew "mysql"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
+
+brew "docker"
+brew "docker-machine"
 
 brew "ag"
 brew "ctags"
