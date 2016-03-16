@@ -27,22 +27,25 @@ if which peco &> /dev/null; then
     bindkey '^]' peco_select_src
   fi
 
-  # Issue of GitHub
-  # see https://github.com/i2bskn/github-issues
-  if which github-issues > /dev/null 2>&1; then
-    function peco_select_issue() {
-      if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-        local selected=$(github-issues -current | peco | awk '{print $2}')
-      else
-        local selected=$(github-issues -self | peco | awk '{print $2}')
-      fi
+  case "${OSTYPE}" in
+  darwin*)
+    # Issue of GitHub
+    # see https://github.com/i2bskn/github-issues
+    if which github-issues > /dev/null 2>&1; then
+      function peco_select_issue() {
+        if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+          local selected=$(github-issues -current | peco | awk '{print $2}')
+        else
+          local selected=$(github-issues -self | peco | awk '{print $2}')
+        fi
 
-      if [ -n "$selected" ]; then
-        open $selected
-      fi
-    }
-    alias i="peco_select_issue"
-  fi
+        if [ -n "$selected" ]; then
+          open -a "/Applications/Google Chrome.app" $selected
+        fi
+      }
+      alias i="peco_select_issue"
+    fi
+  esac
 
   # SSH
   function peco_select_ssh() {
