@@ -346,11 +346,17 @@ endif
 
 " ctrlp.vim {{{
 if neobundle#tap('ctrlp.vim')
+  let g:ctrlp_use_caching = 1
+  let g:ctrlp_clear_cache_on_exit = 0
+  if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -i -l --nocolor --nogroup -g ""'
+  endif
+
+  let g:ctrlp_mruf_max = 300
+
   let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
   let g:ctrlp_switch_buffer = 'Et'
   let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_use_caching = 1
-  let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_prompt_mappings = {
     \   'PrtBS()': ['<bs>'],
@@ -361,8 +367,6 @@ if neobundle#tap('ctrlp.vim')
   let g:ctrlp_custom_ignore = {
     \   'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]vendor$',
     \ }
-
-  let g:ctrlp_mruf_max = 300
 
   nnoremap [ctrlp] <Nop>
   nnoremap m <Nop>
