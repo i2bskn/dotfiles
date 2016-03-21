@@ -10,15 +10,18 @@ set fileformats=unix,dos,mac
 filetype off
 filetype plugin indent off
 
-" Neobundle {{{
-" Install neobundle if neobundle not installed.
-if ! isdirectory(expand('~/.vim/bundle'))
-  echon 'Installing neobundle.vim...'
-  silent call mkdir(expand('~/.vim/bundle'), 'p')
-  silent call system('git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim')
+" Plugins {{{
+" Install dein.vim if dein.vim not installed.
+let s:plugin_dir = expand('~/.vim/dein')
+let s:install_dir = s:plugin_dir . '/repos/github.com/Shougo/dein.vim'
+
+if !isdirectory(s:plugin_dir)
+  echon 'Installing dein.vim...'
+  silent call mkdir(s:plugin_dir . '/repos/github.com/Shougo', 'p')
+  silent call system('git clone https://github.com/Shougo/dein.vim ' . s:install_dir)
   echo 'done.'
   if v:shell_error
-    echoerr 'neobundle.vim installation has failed!'
+    echoerr 'dein.vim installation has failed!'
     finish
   endif
 endif
@@ -28,76 +31,77 @@ if !1 | finish | endif
 
 if has('vim_starting')
   if &compatible
-    set nocompatible               " Be iMproved"
+    set nocompatible
   endif
 
   " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  let &runtimepath = &runtimepath . ',' . s:install_dir
 endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+call dein#begin(s:plugin_dir)
 
-" Let NeoBundle manage NeoBundle
+" Let dein manage dein
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call dein#add('Shougo/dein.vim')
 
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-NeoBundle 'Shougo/vimproc', {
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/vimproc', {
   \   'build' : {
   \     'mac' : 'make -f make_mac.mak',
   \     'unix' : 'make -f make_unix.mak',
   \   },
-  \ }
+  \ })
 
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'i2bskn/ctrlp-altered', {
+call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('i2bskn/ctrlp-altered', {
   \   'depends' : 'ctrlpvim/ctrlp.vim',
-  \ }
+  \ })
 
-NeoBundle 'scrooloose/nerdtree'
+call dein#add('scrooloose/nerdtree')
 
-NeoBundle 'tyru/caw.vim'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'i2bskn/reversal.vim'
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+call dein#add('tyru/caw.vim')
+call dein#add('jiangmiao/auto-pairs')
+call dein#add('i2bskn/reversal.vim')
+call dein#add('ntpeters/vim-better-whitespace')
+call dein#add('tpope/vim-endwise')
+call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-fugitive')
+call dein#add('itchyny/lightline.vim')
+call dein#add('nathanaelkane/vim-indent-guides')
 
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'vim-scripts/vim-stylus'
-NeoBundle 'keith/swift.vim'
+call dein#add('plasticboy/vim-markdown')
+call dein#add('kchmck/vim-coffee-script')
+call dein#add('slim-template/vim-slim')
+call dein#add('digitaltoad/vim-jade')
+call dein#add('vim-scripts/vim-stylus')
+call dein#add('keith/swift.vim')
 
 if has('lua')
-  NeoBundle 'Shougo/neocomplete', {
+  call dein#add('Shougo/neocomplete', {
     \   'depends' : 'Shougo/vimproc',
-    \ }
+    \ })
 endif
 
 if executable('ag')
-  NeoBundle 'rking/ag.vim'
+  call dein#add('rking/ag.vim')
 endif
 
 if executable('go')
-  NeoBundle 'vim-jp/vim-go-extra'
+  call dein#add('vim-jp/vim-go-extra')
 endif
 
-call neobundle#end()
+" Required:
+call dein#end()
 
 " Required:
 filetype plugin indent on
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+	call dein#install()
+endif
 " }}}
 
 " Vim options {{{
@@ -131,7 +135,7 @@ set autoindent
 " Backspace behavior
 set backspace=indent,eol,start
 " Not change the EOL
-if version >= 704
+if v:version >= 704
   set nofixeol
 endif
 " Minimum margin
@@ -271,13 +275,7 @@ endif " }}}
 " }}}
 
 " neocomplete.vim {{{
-if neobundle#tap('neocomplete')
-  call neobundle#config({
-    \   'autoload': {
-    \     'insert': 1
-    \   }
-    \ })
-
+if dein#tap('neocomplete')
   " Disable AutoComplPop.
   let g:acp_enableAtStartup = 0
   " Use neocomplete.
@@ -339,13 +337,11 @@ if neobundle#tap('neocomplete')
   let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-  call neobundle#untap()
 endif
 " }}}
 
 " ctrlp.vim {{{
-if neobundle#tap('ctrlp.vim')
+if dein#tap('ctrlp.vim')
   let g:ctrlp_use_caching = 1
   let g:ctrlp_clear_cache_on_exit = 0
   if executable('ag')
@@ -380,34 +376,28 @@ if neobundle#tap('ctrlp.vim')
   nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
   " Dir
   nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
-
-  call neobundle#untap()
 endif
 " }}}
 
 " ctrlp-altered {{{
-if neobundle#tap('ctrlp-altered')
+if dein#tap('ctrlp-altered')
   let g:ctrlp_altered_commit_size = 5
 
   " Altered
   nnoremap <silent> [ctrlp]a :<C-u>CtrlPAltered<CR>
-
-  call neobundle#untap()
 endif
 " }}}
 
 " nerdtree {{{
-if neobundle#tap('nerdtree')
+if dein#tap('nerdtree')
   let g:NERDTreeShowHidden = 1
 
   nnoremap <silent> <C-l> :<C-u>NERDTreeToggle<CR>
-
-  call neobundle#untap()
 endif
 " }}}
 
 " reversal.vim {{{
-if neobundle#tap('reversal.vim')
+if dein#tap('reversal.vim')
   let g:reversal_get_root_command = 'git rev-parse --show-toplevel'
   let g:reversal_namespace_delimiter = {
     \   'vim': '-',
@@ -415,13 +405,11 @@ if neobundle#tap('reversal.vim')
 
   " Switch buffer to pair file.
   nmap ,w <Plug>(reversal:switch_buffer)
-
-  call neobundle#untap()
 endif
 " }}}
 
 " vim-indent-guides {{{
-if neobundle#tap('vim-indent-guides')
+if dein#tap('vim-indent-guides')
   let g:indent_guides_auto_colors = 0
   let g:indent_guides_guide_size = 1
   let g:indent_guides_enable_on_vim_startup = 1
@@ -431,23 +419,19 @@ if neobundle#tap('vim-indent-guides')
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=240
   augroup END
-
-  call neobundle#untap()
 endif
 " }}}
 
 " caw.vim {{{
-if neobundle#tap('caw.vim')
+if dein#tap('caw.vim')
   " ,c: commentout
-  nmap ,c <Plug>(caw:i:toggle)
-  vmap ,c <Plug>(caw:i:toggle)
-
-  call neobundle#untap()
+  nmap ,c <Plug>(caw:tildepos:toggle)
+  vmap ,c <Plug>(caw:tildepos:toggle)
 endif
 " }}}
 
 " vim-fugitive {{{
-if neobundle#tap('vim-fugitive')
+if dein#tap('vim-fugitive')
   nnoremap [git] <Nop>
   nmap ,g [git]
 
@@ -458,26 +442,22 @@ endif
 " }}}
 
 " vim-markdown {{{
-if neobundle#tap('vim-markdown')
+if dein#tap('vim-markdown')
   let g:vim_markdown_folding_disabled = 1
-
-  call neobundle#untap()
 endif
 " }}}
 
 " vim-go-extra {{{
-if neobundle#tap('vim-go-extra')
+if dein#tap('vim-go-extra')
   augroup GolangSettings
     autocmd!
     autocmd FileType go autocmd BufWritePre <buffer> Fmt
   augroup END
-
-  call neobundle#untap()
 endif
 " }}}
 
 " lightline.vim {{{
-if neobundle#tap('lightline.vim')
+if dein#tap('lightline.vim')
   function! GitBranchName() " {{{
     try
       if exists('*fugitive#head')
@@ -501,8 +481,6 @@ if neobundle#tap('lightline.vim')
     \     'git_branch_name': 'GitBranchName'
     \   }
     \ }
-
-  call neobundle#untap()
 endif
 " }}}
 
