@@ -46,7 +46,6 @@ call dein#begin(s:plugin_dir)
 call dein#add('Shougo/dein.vim')
 
 " Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/vimproc', {
   \   'build' : {
   \     'mac' : 'make -f make_mac.mak',
@@ -100,7 +99,7 @@ filetype plugin indent on
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
-	call dein#install()
+  call dein#install()
 endif
 " }}}
 
@@ -344,10 +343,6 @@ endif
 if dein#tap('ctrlp.vim')
   let g:ctrlp_use_caching = 1
   let g:ctrlp_clear_cache_on_exit = 0
-  if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -i -l --nocolor --nogroup -g ""'
-  endif
-
   let g:ctrlp_mruf_max = 300
 
   let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
