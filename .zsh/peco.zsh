@@ -59,5 +59,6 @@ if which peco &> /dev/null; then
 
   # Aliases
   alias -g P="| peco"
-  alias -g B='`git branch | peco | sed -e "s/^[\* ]*//g"`'
+  alias -g B="\`git branch | peco | sed -e \"s/^[\* ]*//g\"\`"
+  alias -g C="\`git log --pretty=oneline --abbrev-commit | peco | awk '{print \$1}'\`"
 fi
