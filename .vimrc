@@ -54,6 +54,13 @@ call dein#add('Shougo/vimproc', {
   \ })
 
 call dein#add('ctrlpvim/ctrlp.vim')
+
+if executable('ghq')
+  call dein#add('mattn/ctrlp-ghq', {
+    \   'depends' : 'ctrlpvim/ctrlp.vim',
+    \ })
+endif
+
 call dein#add('i2bskn/ctrlp-altered', {
   \   'depends' : 'ctrlpvim/ctrlp.vim',
   \ })
@@ -76,19 +83,10 @@ call dein#add('slim-template/vim-slim')
 call dein#add('digitaltoad/vim-jade')
 call dein#add('vim-scripts/vim-stylus')
 call dein#add('keith/swift.vim')
-
-if has('lua')
-  call dein#add('Shougo/neocomplete', {
-    \   'depends' : 'Shougo/vimproc',
-    \ })
-endif
+call dein#add('vim-jp/vim-go-extra')
 
 if executable('ag')
   call dein#add('rking/ag.vim')
-endif
-
-if executable('go')
-  call dein#add('vim-jp/vim-go-extra')
 endif
 
 " Required:
@@ -227,9 +225,6 @@ nnoremap <silent> ,r :<C-u>source $MYVIMRC<CR>
 " Prevent erroneous operations
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
-
-" Terminate window
-nnoremap <silent> Q :<C-u>q<CR>
 " }}}
 
 " Misc {{{
@@ -273,72 +268,6 @@ if executable('chmod')
 endif " }}}
 " }}}
 
-" neocomplete.vim {{{
-if dein#tap('neocomplete')
-  " Disable AutoComplPop.
-  let g:acp_enableAtStartup = 0
-  " Use neocomplete.
-  let g:neocomplete#enable_at_startup = 1
-  " Use smartcase.
-  let g:neocomplete#enable_smart_case = 1
-  " Set minimum syntax keyword length.
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
-  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-  " Define dictionary.
-  let g:neocomplete#sources#dictionary#dictionaries = {
-    \   'default' : ''
-    \ }
-
-  " Define keyword.
-  if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-  endif
-  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-  " Plugin key-mappings.
-  inoremap <expr><C-g> neocomplete#undo_completion()
-  inoremap <expr><C-l> neocomplete#complete_common_string()
-
-  " Recommended key-mappings.
-  " <CR>: close popup and save indent.
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function()
-    return neocomplete#close_popup() . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-  endfunction
-
-  " <TAB>: completion.
-  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y> neocomplete#close_popup()
-  inoremap <expr><C-e> neocomplete#cancel_popup()
-
-  augroup MyOmniCompletion
-    " Enable omni completion.
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  augroup END
-
-  " Enable heavy omni completion.
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-
-  let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-  let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
-  let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif
-" }}}
-
 " ctrlp.vim {{{
 if dein#tap('ctrlp.vim')
   let g:ctrlp_use_caching = 1
@@ -371,6 +300,13 @@ if dein#tap('ctrlp.vim')
   nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
   " Dir
   nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
+endif
+" }}}
+
+" ctrlp-ghq {{{
+if dein#tap('ctrlp-ghq')
+  " ghq
+  nnoremap <silent> [ctrlp]g :<C-u>CtrlPGhq<CR>
 endif
 " }}}
 
