@@ -47,10 +47,7 @@ call dein#add('Shougo/dein.vim')
 
 " Add or remove your plugins here:
 call dein#add('Shougo/vimproc', {
-  \   'build' : {
-  \     'mac' : 'make -f make_mac.mak',
-  \     'unix' : 'make -f make_unix.mak',
-  \   },
+  \   'build' : 'make',
   \ })
 
 call dein#add('ctrlpvim/ctrlp.vim')
@@ -126,8 +123,10 @@ set softtabstop=2
 set shiftwidth=2
 " Expand tab to spaces
 set expandtab
-" Auto indentation
+" Indentation
 set autoindent
+set cindent
+set cinoptions+=g0
 
 " Backspace behavior
 set backspace=indent,eol,start
@@ -204,6 +203,14 @@ nnoremap g# g#zz
 " Folding toggle
 nnoremap ,f za
 
+" Quickfix
+nnoremap ,cn :<C-u>cnext<CR>
+nnoremap ,cp :<C-u>cprevious<CR>
+
+" Tags
+nnoremap ,tn :<C-u>tnext<CR>
+nnoremap ,tp :<C-u>tprevious<CR>
+
 " Pastetoggle
 nnoremap <F2> :<C-u>set paste! paste?<CR>
 set pastetoggle=<F2>
@@ -214,17 +221,9 @@ nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
 " Replace shortcut
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 
-" Prev tag
-nnoremap <C-t> <Nop>
-nnoremap ,t <C-t>
-
 " Edit .vimrc
 nnoremap <silent> ,v :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> ,r :<C-u>source $MYVIMRC<CR>
-
-" Prevent erroneous operations
-nnoremap ZZ <Nop>
-nnoremap ZQ <Nop>
 " }}}
 
 " Misc {{{
