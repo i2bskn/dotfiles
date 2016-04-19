@@ -17,6 +17,7 @@ fi
 LIBRARIES=(
   github.com/nsf/gocode
   github.com/golang/lint/golint
+  code.google.com/p/go.tools/cmd/godoc
 )
 
 for lib in ${LIBRARIES[@]}; do
