@@ -52,12 +52,6 @@ call dein#add('Shougo/vimproc', {
 
 call dein#add('ctrlpvim/ctrlp.vim')
 
-if executable('ghq')
-  call dein#add('mattn/ctrlp-ghq', {
-    \   'depends' : 'ctrlpvim/ctrlp.vim',
-    \ })
-endif
-
 call dein#add('i2bskn/ctrlp-altered', {
   \   'depends' : 'ctrlpvim/ctrlp.vim',
   \ })
@@ -81,10 +75,6 @@ call dein#add('digitaltoad/vim-jade')
 call dein#add('vim-scripts/vim-stylus')
 call dein#add('keith/swift.vim')
 call dein#add('vim-jp/vim-go-extra')
-
-if executable('ag')
-  call dein#add('rking/ag.vim')
-endif
 
 " Required:
 call dein#end()
@@ -210,6 +200,8 @@ nnoremap ,cp :<C-u>cprevious<CR>
 " Tags
 nnoremap ,tn :<C-u>tnext<CR>
 nnoremap ,tp :<C-u>tprevious<CR>
+nnoremap <C-t> <Nop>
+nnoremap ,tb <C-t>
 
 " Pastetoggle
 nnoremap <F2> :<C-u>set paste! paste?<CR>
@@ -243,6 +235,17 @@ augroup FileTypeSettings
   autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
 augroup END
+" }}}
+
+" Grep Settings {{{
+augroup GrepWithQuickFix
+  autocmd!
+  autocmd QuickFixCmdPost *grep* cwindow
+augroup END
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
 " }}}
 
 " Not comment on the new line {{{
@@ -299,13 +302,6 @@ if dein#tap('ctrlp.vim')
   nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
   " Dir
   nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
-endif
-" }}}
-
-" ctrlp-ghq {{{
-if dein#tap('ctrlp-ghq')
-  " ghq
-  nnoremap <silent> [ctrlp]g :<C-u>CtrlPGhq<CR>
 endif
 " }}}
 
@@ -388,6 +384,26 @@ endif
 
 " lightline.vim {{{
 if dein#tap('lightline.vim')
+  let g:lightline = {
+    \   'colorscheme': 'jellybeans',
+    \   'active': {
+    \     'left': [
+    \       ['mode', 'paste'],
+    \       ['git_branch_name', 'readonly', 'filename', 'modified'],
+    \       ['quick_fix_count']
+    \     ],
+    \     'right': [
+    \       ['lineinfo', 'quickfix_count'],
+    \       ['percent'],
+    \       ['fileformat', 'fileencoding', 'filetype'],
+    \     ],
+    \   },
+    \   'component_function': {
+    \     'git_branch_name': 'GitBranchName',
+    \     'quickfix_count': 'QuickFixCount',
+    \   },
+    \ }
+
   function! GitBranchName() " {{{
     try
       if exists('*fugitive#head')
@@ -399,18 +415,12 @@ if dein#tap('lightline.vim')
     return ''
   endfunction " }}}
 
-  let g:lightline = {
-    \   'colorscheme': 'jellybeans',
-    \   'active': {
-    \     'left': [
-    \       ['mode', 'paste'],
-    \       ['git_branch_name', 'readonly', 'filename', 'modified']
-    \     ]
-    \   },
-    \   'component_function': {
-    \     'git_branch_name': 'GitBranchName'
-    \   }
-    \ }
+  function! QuickFixCount() " {{{
+    if &filetype == 'qf'
+      return 'qf:' . len(getqflist())
+    endif
+    return ''
+  endfunction " }}}
 endif
 " }}}
 
