@@ -159,6 +159,11 @@ set laststatus=2
 " Folding
 set foldmethod=marker
 set foldcolumn=2
+
+" Tags
+if !dein#tap('vim-fugitive')
+  set tags+=.git/tags;
+endif
 " }}}
 
 " Keymaps {{{
@@ -277,17 +282,12 @@ if dein#tap('ctrlp.vim')
   let g:ctrlp_mruf_max = 300
 
   let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
-  let g:ctrlp_switch_buffer = 'Et'
-  let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_open_new_file = 'r'
+  " let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_prompt_mappings = {
-    \   'PrtBS()': ['<bs>'],
-    \   'PrtCurLeft()': ['<left>'],
-    \   'PrtCurRight()': ['<right>'],
     \   'PrtClearCache()': ['<c-l>'],
     \ }
   let g:ctrlp_custom_ignore = {
-    \   'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]vendor$',
+    \   'dir':  '\v[\/]\.(git|svn)$|\v[\/]vendor$',
     \ }
 
   nnoremap [ctrlp] <Nop>
@@ -390,7 +390,6 @@ if dein#tap('lightline.vim')
     \     'left': [
     \       ['mode', 'paste'],
     \       ['git_branch_name', 'readonly', 'filename', 'modified'],
-    \       ['quick_fix_count']
     \     ],
     \     'right': [
     \       ['lineinfo', 'quickfix_count'],
