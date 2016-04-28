@@ -282,8 +282,10 @@ if dein#tap('ctrlp.vim')
   let g:ctrlp_mruf_max = 300
 
   let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
-  " let g:ctrlp_open_new_file = 'r'
+  let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_prompt_mappings = {
+    \   'PrtCurLeft()': ['<left>'],
+    \   'PrtCurRight()': ['<right>'],
     \   'PrtClearCache()': ['<c-l>'],
     \ }
   let g:ctrlp_custom_ignore = {
