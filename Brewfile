@@ -33,6 +33,7 @@ brew "docker"
 brew "docker-machine"
 
 brew "ag"
+brew "clang-format"
 brew "ctags"
 brew "direnv"
 brew "ghq"

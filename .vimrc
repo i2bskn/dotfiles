@@ -58,6 +58,12 @@ call dein#add('i2bskn/ctrlp-altered', {
 
 call dein#add('scrooloose/nerdtree')
 
+if has('lua')
+  call dein#add('Shougo/neocomplete', {
+    \   'depends' : 'Shougo/vimproc',
+    \ })
+endif
+
 call dein#add('tyru/caw.vim')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('i2bskn/reversal.vim')
@@ -69,10 +75,10 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('nathanaelkane/vim-indent-guides')
 
 call dein#add('plasticboy/vim-markdown')
-call dein#add('kchmck/vim-coffee-script')
 call dein#add('slim-template/vim-slim')
 call dein#add('digitaltoad/vim-jade')
 call dein#add('vim-scripts/vim-stylus')
+call dein#add('kchmck/vim-coffee-script')
 call dein#add('keith/swift.vim')
 call dein#add('vim-jp/vim-go-extra')
 
@@ -164,6 +170,10 @@ set foldcolumn=2
 if !dein#tap('vim-fugitive')
   set tags+=.git/tags;
 endif
+
+if has('clipboard')
+  set clipboard=unnamed
+endif
 " }}}
 
 " Keymaps {{{
@@ -230,7 +240,7 @@ if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif " }}}
 
-" FileType Settings {{{
+" Individual FileType Settings {{{
 augroup FileTypeSettings
   autocmd!
   autocmd FileType c setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
@@ -239,8 +249,7 @@ augroup FileTypeSettings
   autocmd FileType swift setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
-augroup END
-" }}}
+augroup END " }}}
 
 " Grep Settings {{{
 augroup GrepWithQuickFix
@@ -250,28 +259,6 @@ augroup END
 
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-endif
-" }}}
-
-" Not comment on the new line {{{
-augroup NotCommentNewLine
-  autocmd!
-  autocmd FileType * setlocal formatoptions-=ro
-augroup END " }}}
-
-" To executable {{{
-if executable('chmod')
-  function! s:add_permission() " {{{
-    let file = expand('%:p')
-    if getline(1) =~# '^#!' && !executable(file)
-      silent! call vimproc#system('chmod 755 ' . shellescape(file))
-    endif
-  endfunction " }}}
-
-  augroup AddPermission
-    autocmd!
-    autocmd BufWritePost * call <SID>add_permission()
-  augroup END
 endif " }}}
 " }}}
 
@@ -321,6 +308,72 @@ if dein#tap('nerdtree')
   let g:NERDTreeShowHidden = 1
 
   nnoremap <silent> <C-l> :<C-u>NERDTreeToggle<CR>
+endif
+" }}}
+
+" neocomplete.vim {{{
+if dein#tap('neocomplete')
+  " Disable AutoComplPop.
+  let g:acp_enableAtStartup = 0
+  " Use neocomplete.
+  let g:neocomplete#enable_at_startup = 1
+  " Use smartcase.
+  let g:neocomplete#enable_smart_case = 1
+  " Set minimum syntax keyword length.
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+  " Define dictionary.
+  let g:neocomplete#sources#dictionary#dictionaries = {
+    \   'default' : ''
+    \ }
+
+  " Define keyword.
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+  " Plugin key-mappings.
+  inoremap <expr><C-g> neocomplete#undo_completion()
+  inoremap <expr><C-l> neocomplete#complete_common_string()
+
+  " Recommended key-mappings.
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return neocomplete#close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  endfunction
+
+  " <TAB>: completion.
+  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y> neocomplete#close_popup()
+  inoremap <expr><C-e> neocomplete#cancel_popup()
+
+  augroup MyOmniCompletion
+    " Enable omni completion.
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  augroup END
+
+  " Enable heavy omni completion.
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+
+  let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+  let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
+  let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 endif
 " }}}
 
@@ -394,14 +447,13 @@ if dein#tap('lightline.vim')
     \       ['git_branch_name', 'readonly', 'filename', 'modified'],
     \     ],
     \     'right': [
-    \       ['lineinfo', 'quickfix_count'],
+    \       ['lineinfo'],
     \       ['percent'],
     \       ['fileformat', 'fileencoding', 'filetype'],
     \     ],
     \   },
     \   'component_function': {
     \     'git_branch_name': 'GitBranchName',
-    \     'quickfix_count': 'QuickFixCount',
     \   },
     \ }
 
@@ -413,13 +465,6 @@ if dein#tap('lightline.vim')
       endif
     catch
     endtry
-    return ''
-  endfunction " }}}
-
-  function! QuickFixCount() " {{{
-    if &filetype == 'qf'
-      return 'qf:' . len(getqflist())
-    endif
     return ''
   endfunction " }}}
 endif
