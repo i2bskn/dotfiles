@@ -225,12 +225,14 @@ set pastetoggle=<F2>
 " Cancel highlights of search result
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
 
+" Grep shortcut
+nnoremap <expr> <C-g> ':silent grep! ' . expand('<cword>')
+
 " Replace shortcut
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 
 " Edit .vimrc
 nnoremap <silent> ,v :<C-u>edit $MYVIMRC<CR>
-nnoremap <silent> ,r :<C-u>source $MYVIMRC<CR>
 " }}}
 
 " Misc {{{
@@ -259,6 +261,10 @@ augroup END
 
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
+elseif executable('grep')
+  set grepprg=grep\ -rnIH\ --exclude-dir=.git
+else
+  set grepprg=internal
 endif " }}}
 " }}}
 
