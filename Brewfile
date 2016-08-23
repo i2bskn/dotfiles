@@ -24,8 +24,8 @@ brew "go"
 brew "lua"
 brew "node"
 
-brew "memcached"
-brew "mysql"
+brew "elasticsearch"
+brew "mariadb"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
 

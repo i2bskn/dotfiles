@@ -76,7 +76,7 @@ call dein#add('nathanaelkane/vim-indent-guides')
 
 call dein#add('plasticboy/vim-markdown')
 call dein#add('slim-template/vim-slim')
-call dein#add('digitaltoad/vim-jade')
+call dein#add('digitaltoad/vim-pug')
 call dein#add('vim-scripts/vim-stylus')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('keith/swift.vim')
