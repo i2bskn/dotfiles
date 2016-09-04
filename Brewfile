@@ -6,9 +6,6 @@
 tap "homebrew/versions"
 tap "caskroom/versions"
 
-# brew-cask
-brew "caskroom/cask/brew-cask"
-
 # Packages
 brew "autoconf"
 brew "automake"
@@ -25,7 +22,7 @@ brew "lua"
 brew "node"
 
 brew "elasticsearch"
-brew "mariadb"
+brew "percona-server"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
 
