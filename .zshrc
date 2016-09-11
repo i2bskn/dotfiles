@@ -126,7 +126,7 @@ fi
 
 # golang
 if which go > /dev/null; then
-  export GOPATH=$HOME/go
+  export GOPATH=$HOME/dev
   export PATH=$PATH:$GOPATH/bin
 fi
 

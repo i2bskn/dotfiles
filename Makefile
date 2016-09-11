@@ -4,12 +4,12 @@ CANDIDATES := $(wildcard .??*) bin
 EXCLUDES := .DS_Store .git .gitignore
 
 DOTFILES := $(filter-out $(EXCLUDES), $(CANDIDATES))
-GHQPATH := ~/ghq
-GOPATH := ~/go
+GOPATH := ~/dev
+GHQPATH := $(GOPATH)/src
 
-.PHONY: install clean ghq
+.PHONY: install clean devenv
 
-all: install ghqenv goenv;
+all: install devenv;
 
 install:
 	@$(foreach f, $(DOTFILES), ln -sfnv $(abspath $(f)) $(HOME)/$(f);)
@@ -17,8 +17,5 @@ install:
 clean:
 	@$(foreach f, $(DOTFILES), rm -rfv $(HOME)/$(f);)
 
-ghqenv:
+devenv:
 	mkdir -p $(GHQPATH)
-
-goenv:
-	mkdir -p $(GOPATH)

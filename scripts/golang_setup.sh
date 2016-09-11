@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # Golang default install libraries.
-# - github.com/nfs/gocode => golang completion
-# - github.com/golang/lint/golint => linter for golang
 
 if ! which go > /dev/null 2>&1; then
   echo "Not found: go" 1>&2
@@ -15,9 +13,10 @@ if [ -z $GOPATH ]; then
 fi
 
 LIBRARIES=(
-  github.com/nsf/gocode
-  github.com/golang/lint/golint
   golang.org/x/tools/cmd/godoc
+  golang.org/x/tools/cmd/goimports
+  github.com/golang/lint/golint
+  github.com/nsf/gocode
   github.com/pilu/fresh
 )
 
