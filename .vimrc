@@ -128,7 +128,7 @@ set cinoptions+=g0
 " Backspace behavior
 set backspace=indent,eol,start
 " Not change the EOL
-if v:version >= 704
+if v:version >= 800
   set nofixeol
 endif
 " Minimum margin
@@ -162,6 +162,8 @@ set colorcolumn=100
 set cursorline
 " Always show status line
 set laststatus=2
+" Don't overlap double byte character
+set ambiwidth=double
 
 " Folding
 set foldmethod=marker
@@ -170,10 +172,6 @@ set foldcolumn=2
 " Tags
 if !dein#tap('vim-fugitive')
   set tags+=.git/tags;
-endif
-
-if has('clipboard')
-  set clipboard=unnamed
 endif
 " }}}
 
