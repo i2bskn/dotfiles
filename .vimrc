@@ -244,8 +244,8 @@ endif " }}}
 " Individual FileType Settings {{{
 augroup FileTypeSettings
   autocmd!
-  autocmd FileType c setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
-  autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab foldmethod=syntax
+  autocmd FileType c setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
