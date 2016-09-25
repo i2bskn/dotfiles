@@ -52,6 +52,5 @@ brew "zsh-completions"
 
 # .dmg
 cask "appcleaner"
-cask "imageoptim"
 cask "iterm2"
 cask "java"
