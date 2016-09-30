@@ -283,7 +283,7 @@ if dein#tap('ctrlp.vim')
     \   'PrtClearCache()': ['<c-l>'],
     \ }
   let g:ctrlp_custom_ignore = {
-    \   'dir':  '\v[\/]\.(git|svn)$|\v[\/]vendor$',
+    \   'dir':  '\v[\/]\.(git|svn)$|\v[\/]vendor$|\v[\/]node_modules$',
     \ }
 
   nnoremap [ctrlp] <Nop>
