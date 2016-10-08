@@ -21,10 +21,10 @@ fi
 [ ! -e $plugin_dir  ] && mkdir -pv $plugin_dir
 
 if [ -d $plugin_dir  ]; then
-  # pyenv-virtualenv
-  if [ -e $plugin_dir/pyenv-virtualenv ]; then
-    echo "pyenv-virtualenv is already installed."
+  # pyenv-update
+  if [ -e $plugin_dir/pyenv-update ]; then
+    echo "pyenv-update is already installed."
   else
-    git clone https://github.com/yyuu/pyenv-virtualenv.git $plugin_dir/pyenv-virtualenv
+    git clone git://github.com/yyuu/pyenv-update.git $plugin_dir/pyenv-update
   fi
 fi
