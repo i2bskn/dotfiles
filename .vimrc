@@ -248,7 +248,7 @@ augroup FileTypeSettings
   autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType swift setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
@@ -283,7 +283,8 @@ if dein#tap('ctrlp.vim')
     \   'PrtClearCache()': ['<c-l>'],
     \ }
   let g:ctrlp_custom_ignore = {
-    \   'dir':  '\v[\/]\.(git|svn)$|\v[\/]vendor$|\v[\/]node_modules$',
+    \   'dir':  '\v[\/]\.(git|svn)$|\v[\/](vendor|node_modules)$|\v\.(egg-info)$',
+    \   'file': '\v\.(pyc)$',
     \ }
 
   nnoremap [ctrlp] <Nop>
