@@ -80,6 +80,7 @@ call dein#add('slim-template/vim-slim')
 call dein#add('digitaltoad/vim-pug')
 call dein#add('vim-scripts/vim-stylus')
 call dein#add('kchmck/vim-coffee-script')
+call dein#add('othree/yajs.vim')
 call dein#add('keith/swift.vim')
 call dein#add('vim-jp/vim-go-extra')
 
@@ -250,7 +251,6 @@ augroup FileTypeSettings
   autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType swift setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab
 augroup END " }}}
 
