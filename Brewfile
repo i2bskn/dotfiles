@@ -4,7 +4,6 @@
 
 # taps
 tap "homebrew/versions"
-tap "caskroom/versions"
 
 # Packages
 brew "autoconf"
@@ -26,9 +25,6 @@ brew "percona-server"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
 
-brew "docker"
-brew "docker-machine"
-
 brew "ag"
 brew "clang-format"
 brew "ctags"
@@ -49,8 +45,3 @@ brew "vim", args: ["with-lua"]
 brew "wget"
 brew "zsh"
 brew "zsh-completions"
-
-# .dmg
-cask "appcleaner"
-cask "iterm2"
-cask "java"
