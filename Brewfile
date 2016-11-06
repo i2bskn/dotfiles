@@ -21,7 +21,7 @@ brew "lua"
 brew "node"
 
 brew "elasticsearch"
-brew "percona-server"
+brew "postgresql"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
 
