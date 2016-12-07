@@ -52,6 +52,7 @@
   st = status --short --branch
   cl = clone
   clr = clone --recursive
+  cls = clone --depth 1
   gr = grep --line-number -I
 
   # fetch (with prune) / pull / push

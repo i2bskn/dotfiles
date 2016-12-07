@@ -60,4 +60,7 @@ if which peco &> /dev/null; then
   # Aliases
   alias -g P="| peco"
   alias -g B="\`git branch | peco | sed -e \"s/^[\* ]*//g\"\`"
+  if which docker > /dev/null 2>&1; then
+    alias -g D="\`docker ps --format '{{.Names}}' | peco\`"
+  fi
 fi
