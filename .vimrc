@@ -56,6 +56,12 @@ call dein#add('i2bskn/ctrlp-altered', {
   \   'depends' : 'ctrlpvim/ctrlp.vim',
   \ })
 
+if executable('ghq')
+  call dein#add('mattn/ctrlp-ghq', {
+    \   'depends' : 'ctrlpvim/ctrlp.vim',
+    \ })
+endif
+
 call dein#add('scrooloose/nerdtree')
 
 if has('lua')
@@ -211,6 +217,7 @@ nnoremap ,f za
 " Quickfix
 nnoremap ,cn :<C-u>cnext<CR>
 nnoremap ,cp :<C-u>cprevious<CR>
+nnoremap ,cc :<C-u>cclose<CR>
 
 " Tags
 nnoremap ,tn :<C-u>tnext<CR>
@@ -308,6 +315,13 @@ if dein#tap('ctrlp-altered')
 
   " Altered
   nnoremap <silent> [ctrlp]a :<C-u>CtrlPAltered<CR>
+endif
+" }}}
+
+" ctrlp-ghq {{{
+if dein#tap('ctrlp-ghq')
+  " ghq
+  nnoremap <silent> [ctrlp]g :<C-u>CtrlPGhq<CR>
 endif
 " }}}
 
