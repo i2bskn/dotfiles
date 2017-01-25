@@ -15,6 +15,8 @@ fi
 LIBRARIES=(
   golang.org/x/tools/cmd/godoc
   golang.org/x/tools/cmd/goimports
+  golang.org/x/tools/cmd/present
+  github.com/golang/dep
   github.com/golang/lint/golint
   github.com/nsf/gocode
   github.com/pilu/fresh
