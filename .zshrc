@@ -115,7 +115,11 @@ fi
 
 # miniconda
 if [ -e $HOME/miniconda3 ]; then
-  export PATH="/Users/i2bskn/miniconda3/bin:$PATH"
+  export PATH="$HOME/miniconda3/bin:$PATH"
+
+  if which brew > /dev/null 2>&1; then
+    alias brew="env PATH=${PATH//$HOME\/miniconda3\/bin:/} brew"
+  fi
 fi
 
 # golang
