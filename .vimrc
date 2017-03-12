@@ -89,6 +89,7 @@ call dein#add('kchmck/vim-coffee-script')
 call dein#add('othree/yajs.vim')
 call dein#add('keith/swift.vim')
 call dein#add('vim-jp/vim-go-extra')
+call dein#add('cespare/vim-toml')
 
 " Required:
 call dein#end()
