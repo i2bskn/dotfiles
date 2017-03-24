@@ -2,9 +2,6 @@
 # Run `brew bundle` to install homebrew packages.
 # see https://github.com/Homebrew/homebrew-bundle
 
-# taps
-tap "homebrew/versions"
-
 # Packages
 brew "autoconf"
 brew "automake"
@@ -20,7 +17,7 @@ brew "lua"
 brew "node"
 
 brew "percona-server"
-brew "redis", args: ["with-jemalloc"]
+brew "redis", args: ["with-jemalloc", "HEAD"]
 brew "sqlite"
 
 brew "ag"
