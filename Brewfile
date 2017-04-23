@@ -16,7 +16,7 @@ brew "go"
 brew "lua"
 brew "node"
 
-brew "percona-server"
+brew "mariadb"
 brew "redis", args: ["with-jemalloc", "HEAD"]
 brew "sqlite"
 
