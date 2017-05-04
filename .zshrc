@@ -139,7 +139,7 @@ if which direnv > /dev/null; then
 fi
 
 # Utilities
-[ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
+[ -d $HOME/.local/bin ] && export PATH=$PATH:$HOME/.local/bin
 
 export LANG=ja_JP.UTF-8
 export GREP_OPTIONS="--binary-files=without-match --color=auto"
