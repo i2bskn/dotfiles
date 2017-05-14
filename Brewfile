@@ -38,5 +38,6 @@ brew "tmux"
 brew "tree"
 brew "vim", args: ["with-lua"]
 brew "wget"
+brew "yarn"
 brew "zsh"
 brew "zsh-completions"
