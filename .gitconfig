@@ -62,7 +62,7 @@
   pt = push --tags
 
   # branch
-  br = branch -vv
+  br = branch
   ba = branch -a
 
   # checkout
