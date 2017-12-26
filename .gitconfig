@@ -55,9 +55,9 @@
   cls = clone --depth 1
   gr = grep --line-number -I
 
-  # fetch (with prune) / pull / push
+  # fetch / pull / push
   fo = fetch origin
-  fm = pull # with rebase
+  fm = pull --prune # with rebase
   p = push
   pt = push --tags
 
@@ -98,6 +98,9 @@
 
 [ghq]
   root = ~/dev/src
+
+[github]
+  user = i2bskn
 
 [include]
   path = ~/.gitconfig.local

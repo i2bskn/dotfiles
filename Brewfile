@@ -16,8 +16,8 @@ brew "go"
 brew "lua"
 brew "node"
 
-brew "postgresql"
-brew "redis", args: ["with-jemalloc", "HEAD"]
+brew "mysql"
+brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
 
 brew "ag"
