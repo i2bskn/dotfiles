@@ -16,12 +16,11 @@ brew "go"
 brew "lua"
 brew "node"
 
-brew "mysql"
+brew "percona-server"
 brew "redis", args: ["with-jemalloc"]
 brew "sqlite"
 
 brew "ag"
-brew "clang-format"
 brew "ctags"
 brew "direnv"
 brew "ghq"
