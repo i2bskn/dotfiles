@@ -113,15 +113,6 @@ if [ -e $HOME/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
-# miniconda
-if [ -e $HOME/miniconda3 ]; then
-  export PATH="$HOME/miniconda3/bin:$PATH"
-
-  if which brew > /dev/null 2>&1; then
-    alias brew="env PATH=${PATH//$HOME\/miniconda3\/bin:/} brew"
-  fi
-fi
-
 # golang
 if which go > /dev/null; then
   export GOPATH=$HOME/dev
@@ -136,6 +127,14 @@ fi
 # direnv
 if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
+fi
+
+# OpenSSL
+if [ -d /usr/local/opt/openssl ]; then
+  export PATH="/usr/local/opt/openssl/bin:$PATH"
+  export LDFLAGS="-L/usr/local/opt/openssl/lib"
+  export CPPFLAGS="-I/usr/local/opt/openssl/include"
+  export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 fi
 
 # Utilities
