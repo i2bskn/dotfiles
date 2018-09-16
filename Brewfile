@@ -31,8 +31,6 @@ brew "mecab"
 brew "mecab-ipadic"
 brew "nkf"
 brew "peco"
-brew "tig"
-brew "tmux"
 brew "tree"
 brew "vim", args: ["with-lua"]
 brew "wget"
