@@ -4,7 +4,7 @@ zstyle ':vcs_info:*' formats '%s->(%b)'
 
 precmd() {
   psvar=()
-  LANG=en_US.UTF-8 vcs_info
+  LANG=en_US.UTF-8 vcs_info > /dev/null 2>&1
   psvar[1]=$vcs_info_msg_0_
 }
 
