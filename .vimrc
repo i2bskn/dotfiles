@@ -73,7 +73,6 @@ endif
 call dein#add('tyru/caw.vim')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('i2bskn/reversal.vim')
-call dein#add('ntpeters/vim-better-whitespace')
 call dein#add('tpope/vim-endwise')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-fugitive')
@@ -207,8 +206,10 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" Folding toggle
+" Folding
 nnoremap ,f za
+nnoremap ,fr zR
+nnoremap ,fm zM
 
 " Quickfix
 nnoremap ,cn :<C-u>cnext<CR>
