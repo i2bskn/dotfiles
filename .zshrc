@@ -123,6 +123,7 @@ fi
 if which go > /dev/null; then
   export GOPATH=$HOME/dev
   export PATH=$PATH:$GOPATH/bin
+  export GO111MODULE=on
 fi
 
 # zsh-completions
