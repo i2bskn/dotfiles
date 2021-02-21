@@ -15,10 +15,10 @@ brew "readline"
 brew "go"
 brew "lua"
 brew "node"
+brew "php"
 
-brew "percona-server"
+brew "mysql@5.7"
 brew "redis", args: ["with-jemalloc"]
-brew "sqlite"
 
 brew "ag"
 brew "ctags"
