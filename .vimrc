@@ -31,7 +31,7 @@ if &compatible
 endif
 
 "set runtimepath+=s:install_dir
-set runtimepath+=/Users/iiboshi_ken/.cache/dein/repos/github.com/Shougo/dein.vim
+execute 'set runtimepath+=' . s:install_dir
 
 " Required:
 call dein#begin(s:plugin_dir)
