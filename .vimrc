@@ -71,7 +71,7 @@ call dein#add('plasticboy/vim-markdown')
 call dein#add('slim-template/vim-slim')
 call dein#add('othree/yajs.vim')
 call dein#add('othree/html5.vim')
-call dein#add('vim-jp/vim-go-extra')
+call dein#add('mattn/vim-goimports')
 
 " Required:
 call dein#end()

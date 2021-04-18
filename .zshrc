@@ -118,6 +118,7 @@ if [ -e $HOME/.nodenv ]; then
   eval "$(nodenv init -)"
 fi
 
+# pyenv
 if [ -e $HOME/.pyenv ]; then
   export PYENV_ROOT=$HOME/.pyenv
   export PATH=$PYENV_ROOT/bin:$PATH
@@ -139,14 +140,6 @@ fi
 # direnv
 if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
-fi
-
-# OpenSSL
-if [ -d /usr/local/opt/openssl ]; then
-  export PATH="/usr/local/opt/openssl/bin:$PATH"
-  export LDFLAGS="-L/usr/local/opt/openssl/lib"
-  export CPPFLAGS="-I/usr/local/opt/openssl/include"
-  export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 fi
 
 # Utilities
