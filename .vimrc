@@ -63,7 +63,6 @@ call dein#add('jiangmiao/auto-pairs')
 call dein#add('i2bskn/reversal.vim')
 call dein#add('tpope/vim-endwise')
 call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-fugitive')
 call dein#add('itchyny/lightline.vim')
 call dein#add('nathanaelkane/vim-indent-guides')
 
@@ -334,15 +333,6 @@ augroup END
 " ,c: commentout
 nmap ,c <Plug>(caw:tildepos:toggle)
 vmap ,c <Plug>(caw:tildepos:toggle)
-" }}}
-
-" vim-fugitive {{{
-nnoremap [git] <Nop>
-nmap ,g [git]
-
-nnoremap <silent> [git]s :<C-u>Gstatus<CR>
-nnoremap <silent> [git]d :<C-u>Gdiff<CR>
-nnoremap <silent> [git]b :<C-u>Gblame<CR>
 " }}}
 
 " vim-markdown {{{
