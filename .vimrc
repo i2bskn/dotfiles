@@ -339,13 +339,6 @@ vmap ,c <Plug>(caw:tildepos:toggle)
 let g:vim_markdown_folding_disabled = 1
 " }}}
 
-" vim-go-extra {{{
-augroup GolangSettings
-  autocmd!
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
-augroup END
-" }}}
-
 " lightline.vim {{{
 let g:lightline = {
   \   'colorscheme': 'jellybeans',

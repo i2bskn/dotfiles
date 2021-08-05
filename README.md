@@ -12,6 +12,8 @@ Requirements
     - Xcode install and execute `xcode-select --install`.
     - Execute `sudo xcodebuild -license` for agree to the license.
 - [Homebrew](http://brew.sh/)
+- goimports
+    - Execute `go install golang.org/x/tools/cmd/goimports@latest`
 
 Installation
 ------------
