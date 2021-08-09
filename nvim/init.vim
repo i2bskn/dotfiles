@@ -11,7 +11,10 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin(data_dir.'/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'tpope/vim-endwise'
   Plug 'mattn/vim-goimports'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'slim-template/vim-slim'
   Plug 'itchyny/vim-gitbranch'
   Plug 'itchyny/lightline.vim'
   Plug 'w0ng/vim-hybrid'
