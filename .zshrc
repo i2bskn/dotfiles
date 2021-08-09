@@ -81,7 +81,7 @@ zstyle ':completion:*' group-name ''
 
 # aliases {{{
 alias g="git"
-alias v="vim"
+alias v="nvim"
 
 alias rm="rm -i"
 alias mv="mv -i"
