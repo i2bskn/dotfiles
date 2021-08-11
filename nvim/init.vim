@@ -11,10 +11,12 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin(data_dir.'/plugged')
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdtree'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-fugitive'
   Plug 'mattn/vim-goimports'
   Plug 'sheerun/vim-polyglot'
   Plug 'slim-template/vim-slim'
@@ -32,8 +34,80 @@ function s:is_plugged(name)
   endif
 endfunction
 
+" Vim options {{{
+" Do not create backup, swapfile, undofile
+set nobackup
+set noswapfile
+set noundofile
+
+" Incremental search
+set incsearch
+" Highlights search result
+set hlsearch
+" Case insensitive
+set ignorecase
+" Case sensitive if including uppercase
+set smartcase
+" Back to top when search to end
+set wrapscan
+
+" " Tab spaces
+" set tabstop=2
+" " Operation tab spaces
+" set softtabstop=2
+" " Indent size
+" set shiftwidth=2
+" " Expand tab to spaces
+" set expandtab
+" " Indentation
+" set autoindent
+" set cindent
+" set cinoptions+=g0
+
+" " Backspace behavior
+" set backspace=indent,eol,start
+" " Minimum margin
+" set scrolloff=5
+" " Complements file name
+" set wildmenu
+" " Complements list
+" set wildmode=list:longest
+" Display another buffer without saving buffer
+set hidden
+" " Reflect changes from another editor
+" set autoread
+" " Open the new window to right
+" set splitright
+" " Open the new window to under
+" set splitbelow
+
 " Display line number
 set number
+
+" " Hide tab and line break character
+" set nolist
+" " Display cursor position
+" set ruler
+" " Display command in the input
+" set showcmd
+" " Highlight corresponding brackets
+" set showmatch
+" " Highlight guideline to break
+" set colorcolumn=100
+" " Highlights cursor line
+" set cursorline
+" " Always show status line
+" set laststatus=2
+" " Don't overlap double byte character
+" set ambiwidth=double
+
+" " Folding
+" set foldmethod=marker
+" set foldcolumn=2
+
+" " Tags
+" set tags+=.git/tags;
+" }}}
 
 " Keymaps {{{
 " Head of line/End of line
@@ -86,44 +160,22 @@ nnoremap gs :<C-u>%s///g<Left><Left><Left>
 " }}}
 
 " fzf.vim {{{
+let g:fzf_command_prefix = 'Fzf'
 
-" }}}
-
-" ctrlp.vim {{{
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_mruf_max = 300
-
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_prompt_mappings = {
-  \   'PrtCurLeft()': ['<left>'],
-  \   'PrtCurRight()': ['<right>'],
-  \   'PrtClearCache()': ['<c-l>'],
-  \ }
-let g:ctrlp_custom_ignore = {
-  \   'dir':  '\v[\/]\.(git|svn)$|\v[\/](vendor|node_modules)$|\v\.(egg-info)$',
-  \   'file': '\v\.(pyc)$',
-  \ }
-
-nnoremap [ctrlp] <Nop>
+nnoremap [fzf] <Nop>
 nnoremap m <Nop>
-nmap m [ctrlp]
+nmap m [fzf]
 
-" Buffer
-nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
-" MRU
-nnoremap <silent> [ctrlp]m :<C-u>CtrlPMRUFiles<CR>
-" Tag
-nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
-" Dir
-nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
+nnoremap [fzf]m :<C-u>FzfFiles<CR>
+nnoremap [fzf]a :<C-u>FzfAg<CR>
+nnoremap [fzf]b :<C-u>FzfBuffers<CR>
+nnoremap [fzf]h :<C-u>FzfHistory<CR>
 " }}}
 
-" vim-indent-guides {{{
-" let g:indent_guides_auto_colors = 0
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
+" nerdtree {{{
+let g:NERDTreeShowHidden = 1
+
+nnoremap <silent> <C-l> :<C-u>NERDTreeToggle<CR>
 " }}}
 
 let g:lightline = {
