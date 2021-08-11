@@ -9,16 +9,18 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin(data_dir.'/plugged')
-  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-endwise'
-  Plug 'tyru/caw.vim'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
   Plug 'mattn/vim-goimports'
-  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'sheerun/vim-polyglot'
   Plug 'slim-template/vim-slim'
-  Plug 'itchyny/vim-gitbranch'
-  Plug 'itchyny/lightline.vim'
   Plug 'w0ng/vim-hybrid'
+  Plug 'itchyny/lightline.vim'
+  Plug 'itchyny/vim-gitbranch'
 call plug#end()
 
 " check the specified plugin is installed
@@ -39,14 +41,14 @@ noremap <Space>h g^
 noremap <Space>l g$
 
 " Intuitive jk
-" nnoremap j gj
-" nnoremap gj j
-" nnoremap k gk
-" nnoremap gk k
-" vnoremap j gj
-" vnoremap gj j
-" vnoremap k gk
-" vnoremap gk k
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
+vnoremap j gj
+vnoremap gj j
+vnoremap k gk
+vnoremap gk k
 
 " Display current search result in the center
 nnoremap n nzz
@@ -77,16 +79,14 @@ nnoremap g# g#zz
 " set pastetoggle=<F2>
 
 " Cancel highlights of search result
-" nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
-
-" Grep shortcut
-" nnoremap <expr> <C-g> ':silent grep! ' . expand('<cword>')
+nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
 
 " Replace shortcut
-" nnoremap gs :<C-u>%s///g<Left><Left><Left>
+nnoremap gs :<C-u>%s///g<Left><Left><Left>
+" }}}
 
-" Edit .vimrc
-" nnoremap <silent> ,v :<C-u>edit $MYVIMRC<CR>
+" fzf.vim {{{
+
 " }}}
 
 " ctrlp.vim {{{
@@ -120,10 +120,10 @@ nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
 nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<CR>
 " }}}
 
-" caw.vim {{{
-" ,c: commentout
-nmap ,c <Plug>(caw:hatpos:toggle)
-vmap ,c <Plug>(caw:hatpos:toggle)
+" vim-indent-guides {{{
+" let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 " }}}
 
 let g:lightline = {
