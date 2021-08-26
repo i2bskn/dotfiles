@@ -43,6 +43,6 @@ if ! which pyenv > /dev/null 2>&1; then
   echo "----- start -----"
   echo 'export PYENV_ROOT="$HOME/.pyenv"'
   echo 'export PATH="$PYENV_ROOT/bin:$PATH"'
-  echo 'eval "$(pyenv init -)"'
+  echo 'eval "$(pyenv init --path)"'
   echo "----- end -----"
 fi
