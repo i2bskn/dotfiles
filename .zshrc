@@ -109,7 +109,7 @@ typeset -U path fpath
 # rbenv
 if [ -e $HOME/.rbenv ]; then
   export PATH=$HOME/.rbenv/bin:$PATH
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - zsh)"
 fi
 
 # nodeenv
@@ -140,6 +140,14 @@ fi
 # direnv
 if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
+fi
+
+if [ -e $HOME/google-cloud-sdk ]; then
+  # The next line updates PATH for the Google Cloud SDK.
+  . $HOME/google-cloud-sdk/path.zsh.inc
+
+  # The next line enables shell command completion for gcloud.
+  . $HOME/google-cloud-sdk/completion.zsh.inc
 fi
 
 # Utilities

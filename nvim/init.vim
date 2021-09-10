@@ -105,8 +105,8 @@ set number
 " set foldmethod=marker
 " set foldcolumn=2
 
-" " Tags
-" set tags+=.git/tags;
+" Tags
+set tags+=.git/tags;
 " }}}
 
 " Keymaps {{{
