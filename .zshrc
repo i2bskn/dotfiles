@@ -95,6 +95,7 @@ which ag > /dev/null 2>&1 && alias -g A="| ag"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
+  export LSCOLORS=Gxfxcxdxbxegedabagacad
   alias ls="ls -G"
   ;;
 linux*)
