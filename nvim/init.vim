@@ -51,18 +51,18 @@ set smartcase
 " Back to top when search to end
 set wrapscan
 
-" " Tab spaces
-" set tabstop=2
-" " Operation tab spaces
-" set softtabstop=2
-" " Indent size
-" set shiftwidth=2
-" " Expand tab to spaces
-" set expandtab
-" " Indentation
-" set autoindent
-" set cindent
-" set cinoptions+=g0
+" Tab spaces
+set tabstop=2
+" Operation tab spaces
+set softtabstop=2
+" Indent size
+set shiftwidth=2
+" Expand tab to spaces
+set expandtab
+" Indentation
+set autoindent
+set cindent
+set cinoptions+=g0
 
 " " Backspace behavior
 " set backspace=indent,eol,start
