@@ -17,7 +17,6 @@ call plug#begin(data_dir.'/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
-  Plug 'mattn/vim-goimports'
   Plug 'sheerun/vim-polyglot'
   Plug 'slim-template/vim-slim'
   Plug 'w0ng/vim-hybrid'
