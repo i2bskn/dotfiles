@@ -91,7 +91,7 @@ alias mkdir="mkdir -p"
 alias activate="source .venv/bin/activate"
 
 which less > /dev/null 2>&1 && alias -g L="| less"
-which ag > /dev/null 2>&1 && alias -g A="| ag"
+which rg > /dev/null 2>&1 && alias -g G="| rg"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
