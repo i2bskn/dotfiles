@@ -1,0 +1,14 @@
+*.class
+*.o
+*.so
+*.log
+*.sqlite
+
+.DS_Store
+
+.idea
+*.iml
+
+.envrc
+
+Thumbs.db

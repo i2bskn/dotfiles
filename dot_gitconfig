@@ -1,0 +1,109 @@
+[user]
+  name = i2bskn
+  email = i2bskn@gmail.com
+
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore.global
+  autocrlf = false
+
+[diff]
+  tool = vimdiff
+
+[difftool]
+  prompt = false
+
+[merge]
+  ff = false
+  tool = vimdiff
+
+[mergetool]
+  prompt = false
+
+[push]
+  default = upstream
+
+[fetch]
+  prune = true
+
+[pull]
+  rebase = true
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+
+[alias]
+  st = status --short --branch
+  cl = clone
+  clr = clone --recursive
+  cls = clone --depth 1
+  gr = grep --line-number -I
+
+  # fetch / pull / push
+  fo = fetch origin
+  fm = pull --prune # with rebase
+  p = push
+  pt = push --tags
+
+  # branch
+  br = branch
+  ba = branch -a
+
+  # checkout
+  co = checkout
+  co0 = checkout HEAD --
+  cb = checkout -b
+
+  # merge / rebase
+  m = merge
+  r = rebase
+  ra = rebase --abort
+  rc = rebase --continue
+  ri = rebase -i
+  cp = cherry-pick
+
+  # commit
+  aa = add --all
+  ci = commit
+  ca = commit --amend
+
+  # diff
+  d = diff
+  dc = diff --cached
+  dh = diff HEAD
+  ds = diff --stat
+
+  # log
+  lg = log --pretty=oneline --abbrev-commit --graph --decorate
+  lc = log --pretty=oneline --abbrev-commit --decorate --no-merges
+  lm = log --pretty=oneline --abbrev-commit --decorate --merges
+  lp = log -p
+  rl = reflog
+
+[ghq]
+  root = ~/dev/src
+
+[github]
+  user = i2bskn
+
+[include]
+  path = ~/.gitconfig.local
+
+[init]
+  templatedir = ~/.git_template
