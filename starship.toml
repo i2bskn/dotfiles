@@ -1,0 +1,28 @@
+# プロンプトの全体的な並び順（お好みで調整可能）
+format = """
+$directory\
+$git_branch\
+$git_status\
+$golang\
+$cloud\
+$line_break\
+$character"""
+
+# ディレクトリの設定（短縮表示など）
+[directory]
+truncation_length = 3
+fish_style_pwd_dir_length = 1
+
+# Google Cloud 設定（メールアドレスを隠してプロジェクトだけにしたり、非表示にできる）
+[gcloud]
+format = "on [☁️ ($project)]($style) "
+disabled = false # 完全に消したいなら true
+
+# AWS 設定（これも非表示にしたり、シンプルにできる）
+[aws]
+format = "on [AWS($region)]($style) "
+disabled = false # 完全に消したいなら true
+
+# Goの設定（Goのプロジェクトにいる時だけバージョンを表示）
+[golang]
+format = "via [🐹 $version](bold cyan) "

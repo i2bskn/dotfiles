@@ -15,7 +15,8 @@ all: install devenv sshenv;
 
 install:
 	@$(foreach f, $(DOTFILES), ln -sfnv $(abspath $(f)) $(HOME)/$(f);)
-	ln -sfnv $(abspath nvim) $(CONFIG_PATH)
+	ln -sfnv $(abspath nvim) $(CONFIG_PATH)/nvim
+	ln -sfnv $(abspath starship.toml) $(CONFIG_PATH)/starship.toml
 
 clean:
 	@$(foreach f, $(DOTFILES), rm -rfv $(HOME)/$(f);)

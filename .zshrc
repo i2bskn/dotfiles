@@ -113,11 +113,20 @@ if [ -e $HOME/.rbenv ]; then
   eval "$(rbenv init - zsh)"
 fi
 
-# nodeenv
-if [ -e $HOME/.nodenv ]; then
-  export PATH=$HOME/.nodenv/bin:$PATH
-  eval "$(nodenv init -)"
-fi
+# nvm
+#export NVM_DIR="$HOME/.config/nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#enter_directory()  {
+#    if [[ $PWD == $PREV_PWD ]]; then 
+#        return 
+#    fi 
+#    PREV_PWD=$PWD
+#    [[ -f ".nvmrc" ]] && current_node_ver=`cat .nvmrc` && nvm use $current_node_ver
+# } 
+#export PROMPT_COMMAND=enter_directory
+#precmd() { eval "$PROMPT_COMMAND" }
 
 # pyenv
 if [ -e $HOME/.pyenv ]; then
@@ -127,11 +136,19 @@ if [ -e $HOME/.pyenv ]; then
   eval "$(pyenv init -)"
 fi
 
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+autoload -Uz compinit && compinit
+
 # golang
 if which go > /dev/null; then
-  export GOPATH=$HOME/dev
-  export PATH=$PATH:$GOPATH/bin
-  export GO111MODULE=on
+  export PATH=$PATH:$(go env GOPATH)/bin
+fi
+
+# flutter
+if [ -e $HOME/flutter ]; then
+  export PATH=$PATH:$HOME/flutter/bin
 fi
 
 # zsh-completions
@@ -195,3 +212,31 @@ fi
 # if (which zprof > /dev/null) ;then
 #   zprof | less
 # fi
+
+#export NVM_DIR="$HOME/.config/nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/i2bskn/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/i2bskn/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/i2bskn/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/i2bskn/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/i2bskn/google-cloud-sdk/completion.zsh.inc'; fi
+
+if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+  precmd() {
+    print -Pn "\e]7;file://%m%~\a"
+  }
+fi
+
+
+# Added by Antigravity
+export PATH="/Users/i2bskn/.antigravity/antigravity/bin:$PATH"
+
+eval "$(starship init zsh)"
