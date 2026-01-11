@@ -16,6 +16,7 @@ brew "jq"
 brew "wget"
 brew "nkf"
 brew "gnu-time"
+brew "eza"
 
 # Development Support
 brew "cmake"
