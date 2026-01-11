@@ -1,37 +1,55 @@
 # dotfiles
 
-Configuration files for macOS, managed by [chezmoi](https://www.chezmoi.io/).
+i2bskn's macOS development environment managed by [chezmoi](https://www.chezmoi.io/).
 
-## Quick Start
+## 🚀 Quick Start
 
-Initialize and apply dotfiles on a new machine:
+```zsh
+# Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    chezmoi init --apply i2bskn
+# chezmoi
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply i2bskn
+```
 
-## Tools
+## 🛠 Features
 
-- **Manager**: [chezmoi](https://www.chezmoi.io/)
-- **Package Manager**: [Homebrew](https://brew.sh/)
-- **Runtime Manager**: [mise](https://mise.jdx.dev/)
-- **Shell**: zsh + [Starship](https://starship.rs/)
-- **Terminal**: [WezTerm](https://wezfurlong.org/wezterm/)
-- **Editor**: [Neovim](https://neovim.io/) ([LazyVim](https://www.lazyvim.org/))
+- **Package Management**: [Homebrew](https://brew.sh/) (via `Brewfile`)
+- **Runtime Manager**: [mise](https://mise.jdx.dev/) (Better & Faster than asdf/pyenv)
+- **Shell**: Zsh + [starship](https://starship.rs/) + fzf
+- **Editor**: Neovim
+- **Dotfiles Tool**: [chezmoi](https://www.chezmoi.io/)
 
-## Usage
+## 📝 Usage
 
-### Manage Dotfiles
+### Add/Remove Packages
 
-Add a new file:
+```zsh
+v $(chezmoi source-path)/Brewfile
+chezmoi apply
+```
 
-    chezmoi add ~/.file
+### Manage Language Versions
 
-Apply changes:
+```zsh
+# ex：Node.js
+mise use -g node@latest
+mise ls
+```
 
-    chezmoi apply
+### Update settings
 
-### Manage Runtimes
+```zsh
+# edit
+v ~/.zshrc
 
-Manage languages and tools with [mise](https://mise.jdx.dev/).
+# chezmoi
+chezmoi re-add ~/.zshrc
 
-    mise install
+# commit and push
+cd $(chezmoi source-path)
+git add .
+git commit -m "Update settings"
+git push
+```
 
