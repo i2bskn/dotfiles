@@ -22,7 +22,6 @@ brew "cmake"
 brew "pkg-config"
 brew "openssl@3"
 brew "libyaml"
-brew "nmap"
 
 # Editor & Shell
 brew "neovim"
@@ -32,14 +31,6 @@ brew "zsh-completions"
 # Databases & Infrastructure
 brew "postgresql@17"
 brew "valkey"
-brew "mysql-client@8.0"
-brew "supabase"
-brew "helm"
-brew "pgloader"
-
-# Media & Graph
-brew "imagemagick"
-brew "graphviz"
 
 # Casks
 cask "wezterm"

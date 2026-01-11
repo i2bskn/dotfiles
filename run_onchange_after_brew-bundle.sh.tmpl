@@ -1,3 +1,8 @@
 #!/bin/bash
+
+# Brewfile のハッシュ値を監視対象にする
 # Brewfile hash: {{ include "Brewfile" | sha256sum }}
-brew bundle install --file={{ joinPath .chezmoi.sourceDir "Brewfile" | quote }}
+
+echo "Checking Brewfile dependencies..."
+brew bundle install --file={{ joinPath .chezmoi.sourceDir "Brewfile" | quote }} --cleanup
+
