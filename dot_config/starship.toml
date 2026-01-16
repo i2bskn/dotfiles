@@ -1,28 +1,35 @@
-# プロンプトの全体的な並び順（お好みで調整可能）
+# Prompt
 format = """
 $directory\
 $git_branch\
 $git_status\
 $golang\
-$cloud\
+$nodejs\
+$aws\
+$gcloud\
 $line_break\
 $character"""
 
-# ディレクトリの設定（短縮表示など）
+# Directory
 [directory]
-truncation_length = 3
-fish_style_pwd_dir_length = 1
+truncate_to_repo = true
+truncation_length = 5
 
-# Google Cloud 設定（メールアドレスを隠してプロジェクトだけにしたり、非表示にできる）
-[gcloud]
-format = "on [☁️ ($project)]($style) "
-disabled = false # 完全に消したいなら true
-
-# AWS 設定（これも非表示にしたり、シンプルにできる）
-[aws]
-format = "on [AWS($region)]($style) "
-disabled = false # 完全に消したいなら true
-
-# Goの設定（Goのプロジェクトにいる時だけバージョンを表示）
+# Golang
 [golang]
 format = "via [🐹 $version](bold cyan) "
+
+# Node.js
+[nodejs]
+format = 'via [⬢ $version](bold green) '
+
+# AWS
+[aws]
+format = '[☁️ $profile | $region]($style) '
+style = "bold yellow"
+disabled = false
+
+# Google Cloud
+[gcloud]
+disabled = true
+
