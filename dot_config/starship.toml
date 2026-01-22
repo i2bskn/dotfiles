@@ -5,6 +5,7 @@ $git_branch\
 $git_status\
 $golang\
 $nodejs\
+$python\
 $aws\
 $gcloud\
 $line_break\
@@ -22,6 +23,10 @@ format = "via [🐹 $version](bold cyan) "
 # Node.js
 [nodejs]
 format = 'via [⬢ $version](bold green) '
+
+# Python
+[python]
+format = 'via [🐍 $version( \($virtualenv\))](bold yellow) '
 
 # AWS
 [aws]

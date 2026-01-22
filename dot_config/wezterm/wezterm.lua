@@ -48,6 +48,30 @@ config.colors = {
       fg_color = '#565f89',
     },
   },
+  -- 選択範囲・補完の背景色を見やすくする
+  selection_bg = '#364a82',
+  selection_fg = '#c0caf5',
+  -- ANSIカラーの青を暗めに調整（Railsコンソール補完対策）
+  ansi = {
+    '#15161e', -- black
+    '#f7768e', -- red
+    '#9ece6a', -- green
+    '#e0af68', -- yellow
+    '#7aa2f7', -- blue
+    '#bb9af7', -- magenta
+    '#2d4f67', -- cyan (暗めに - IRB補完対策)
+    '#a9b1d6', -- white
+  },
+  brights = {
+    '#414868', -- bright black
+    '#f7768e', -- bright red
+    '#9ece6a', -- bright green
+    '#e0af68', -- bright yellow
+    '#7aa2f7', -- bright blue
+    '#bb9af7', -- bright magenta
+    '#3d5a80', -- bright cyan (暗めに - IRB補完対策)
+    '#c0caf5', -- bright white
+  },
 }
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
