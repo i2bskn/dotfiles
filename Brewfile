@@ -34,5 +34,9 @@ brew "postgresql@17"
 brew "valkey"
 
 # Casks
+cask "appcleaner"
+cask "hiddenbar"
+cask "raycast"
+cask "stats"
 cask "wezterm"
 

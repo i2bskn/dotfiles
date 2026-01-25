@@ -1,6 +1,0 @@
-Include config.d/*
-
-Host *
-  ForwardAgent yes
-  StrictHostKeyChecking no
-  ServerAliveInterval 15
