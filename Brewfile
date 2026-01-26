@@ -1,5 +1,3 @@
-tap "homebrew/services"
-
 # Core Tools
 brew "git"
 brew "gh"
