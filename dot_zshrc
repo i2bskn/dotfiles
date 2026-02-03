@@ -29,3 +29,7 @@ eval "$(mise activate zsh)"
 
 # Prompt (Starship)
 eval "$(starship init zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+

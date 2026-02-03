@@ -3,7 +3,22 @@ if command -v aws &> /dev/null; then
   export AWS_PROFILE="${AWS_PROFILE:-default}"
   export AWS_DEFAULT_REGION="$(aws configure get region 2>/dev/null)"
 
-  # lightsail Container Status
+  # Lightsail Container Service names
+  lsc-list() {
+    aws lightsail get-container-services \
+      --query "containerServices[].{Name:containerServiceName,State:state,Power:power,Scale:scale,DeployState:currentDeployment.state,Version:currentDeployment.version}" \
+      --output table
+  }
+
+  # Lightsail Container Container List
+  lsc-container-list() {
+    aws lightsail get-container-services \
+      --service-name "$1" \
+      --query "containerServices[0].currentDeployment.containers" \
+      --output yaml
+  }
+
+  # Lightsail Container Status
   lsc-status() {
     if command -v jq &> /dev/null; then
       local result
@@ -45,6 +60,15 @@ if command -v aws &> /dev/null; then
         --query "containerServices[0].{State:state,Deploy:currentDeployment.state,Version:currentDeployment.version,DeployedAt:currentDeployment.createdAt}" \
         --output table
     fi
+  }
+
+  lsc-logs() {
+    aws lightsail get-container-log \
+      --service-name "$1" \
+      --container-name "${2:-$1}" \
+      --start-time "$(date -u -v-1H +%Y-%m-%dT%H:%M:%SZ)" \
+      --query 'logEvents[].message' \
+      --output text
   }
 
   # AWS profile selector
