@@ -14,3 +14,6 @@ opt.smartcase = true
 
 -- 行の折り返しをしない
 opt.wrap = false
+
+-- 行番号（相対行番号を無効化）
+opt.relativenumber = false
