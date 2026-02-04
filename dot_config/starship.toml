@@ -11,6 +11,9 @@ $gcloud\
 $line_break\
 $character"""
 
+# miseの初期起動のオーバーヘッドでタイムアウトする事があるのでデフォルトの500msから少し伸ばす
+command_timeout = 1000
+
 # Directory
 [directory]
 truncate_to_repo = true
