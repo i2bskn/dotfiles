@@ -4,5 +4,5 @@
 # Brewfile hash: {{ include "Brewfile" | sha256sum }}
 
 echo "Checking Brewfile dependencies..."
-brew bundle install --file={{ joinPath .chezmoi.sourceDir "Brewfile" | quote }} --cleanup
+brew bundle install --file={{ joinPath .chezmoi.sourceDir "Brewfile" | quote }}{{ if ne (index . "brew_cleanup") false }} --cleanup{{ end }}
 

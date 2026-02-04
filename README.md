@@ -29,6 +29,17 @@ v $(chezmoi source-path)/Brewfile
 chezmoi apply
 ```
 
+### Disable Brewfile Cleanup
+
+By default, `chezmoi apply` runs `brew bundle --cleanup`, which removes packages not listed in `Brewfile`.
+
+To disable this behavior on specific machines, create `~/.config/chezmoi/chezmoi.toml`:
+
+```toml
+[data]
+    brew_cleanup = false
+```
+
 ### Manage Language Versions
 
 ```zsh
