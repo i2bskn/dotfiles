@@ -17,7 +17,7 @@ config.window_padding = {
 	bottom = 4,
 }
 wezterm.on("gui-startup", function(cmd)
-	local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+	local _, _, window = wezterm.mux.spawn_window(cmd or {})
 	local gui_window = window:gui_window()
 
 	-- 画面サイズを取得
@@ -36,12 +36,6 @@ config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = false
 config.colors = {
 	tab_bar = {
-		-- アクティブなタブの色（目立つ色に）
-		active_tab = {
-			bg_color = "#2b2042",
-			fg_color = "#c0caf5",
-			intensity = "Bold",
-		},
 		-- 非アクティブなタブの色
 		inactive_tab = {
 			bg_color = "#1a1b26",
@@ -53,7 +47,9 @@ config.colors = {
 	selection_fg = "#c0caf5",
 }
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+wezterm.on("format-tab-title", function(tab)
+	local MIN_TAB_WIDTH = 20 -- タブの最小幅（文字数）
+
 	-- paneの現在のディレクトリ情報を取得
 	local cwd_uri = tab.active_pane.current_working_dir
 	local title = ""
@@ -71,6 +67,14 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	else
 		-- ディレクトリが取得できない場合は、プロセス名やデフォルトのタイトルを使用
 		title = tab.active_pane.title
+	end
+
+	-- タイトルを最小幅に合わせてパディング（中央揃え）
+	local padding_total = MIN_TAB_WIDTH - #title
+	if padding_total > 0 then
+		local pad_left = math.floor(padding_total / 2)
+		local pad_right = padding_total - pad_left
+		title = string.rep(" ", pad_left) .. title .. string.rep(" ", pad_right)
 	end
 
 	-- アクティブなタブと非アクティブなタブで見た目を変える
