@@ -1,14 +1,14 @@
 local wezterm = require("wezterm")
 local config = {}
 
--- フォント
+-- Font
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 13.0
 
--- カラースキーム
+-- Color Scheme
 config.color_scheme = "Tokyo Night"
 
--- ウィンドウ設定
+-- Window
 config.window_decorations = "RESIZE"
 config.window_padding = {
 	left = 4,
@@ -30,7 +30,7 @@ wezterm.on("gui-startup", function(cmd)
 	gui_window:set_inner_size(width, height)
 end)
 
--- タブバー
+-- Tab bar
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = false
