@@ -31,6 +31,9 @@ brew "zsh-completions"
 brew "postgresql@17"
 brew "valkey"
 
+# Fonts
+cask "font-jetbrains-mono"
+
 # Casks
 cask "appcleaner"
 cask "hiddenbar"

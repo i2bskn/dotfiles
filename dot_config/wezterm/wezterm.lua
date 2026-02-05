@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 -- フォント
-config.font = wezterm.font("JetBrains Mono", { weight = "Medium" })
+config.font = wezterm.font("JetBrains Mono")
 config.font_size = 13.0
 
 -- カラースキーム
