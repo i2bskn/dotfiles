@@ -36,8 +36,6 @@ cask "font-jetbrains-mono"
 
 # Casks
 cask "appcleaner"
-cask "hiddenbar"
 cask "raycast"
-cask "stats"
 cask "wezterm"
 
