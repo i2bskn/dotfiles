@@ -16,18 +16,34 @@ config.window_padding = {
 	top = 4,
 	bottom = 4,
 }
-wezterm.on("gui-startup", function(cmd)
-	local _, _, window = wezterm.mux.spawn_window(cmd or {})
-	local gui_window = window:gui_window()
 
-	-- 画面サイズを取得
+local function fit_window_to_screen(window)
 	local screen = wezterm.gui.screens().active
 	local width = screen.width
 	local height = screen.height - 300 -- 下部に300pxの余白
 
-	-- ウィンドウサイズと位置を設定
-	gui_window:set_position(0, 0) -- 左上に配置
-	gui_window:set_inner_size(width, height)
+	window:set_position(0, 0) -- 左上に配置
+	window:set_inner_size(width, height)
+end
+
+wezterm.on("gui-startup", function(cmd)
+	local _, _, window = wezterm.mux.spawn_window(cmd or {})
+	fit_window_to_screen(window:gui_window())
+end)
+
+local last_screen_width = nil
+local last_screen_height = nil
+
+wezterm.on("window-focus-changed", function(window, pane)
+	if window:is_focused() then
+		local screen = wezterm.gui.screens().active
+		-- 画面サイズが変わった場合にリサイズ
+		if screen.width ~= last_screen_width or screen.height ~= last_screen_height then
+			last_screen_width = screen.width
+			last_screen_height = screen.height
+			fit_window_to_screen(window)
+		end
+	end
 end)
 
 -- Tab bar

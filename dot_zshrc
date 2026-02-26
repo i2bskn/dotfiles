@@ -25,6 +25,7 @@ for file in $HOME/.zsh/*.zsh; do
 done
 
 # Runtime Manager (mise)
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 eval "$(mise activate zsh)"
 
 # Prompt (Starship)

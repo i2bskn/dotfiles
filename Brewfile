@@ -21,6 +21,8 @@ brew "cmake"
 brew "pkg-config"
 brew "openssl@3"
 brew "libyaml"
+brew "typst"
+brew "poppler"
 
 # Editor & Shell
 brew "neovim"
@@ -29,6 +31,7 @@ brew "zsh-completions"
 
 # Databases & Infrastructure
 brew "postgresql@17"
+brew "mysql-client"
 brew "valkey"
 
 # Fonts
