@@ -33,6 +33,7 @@ brew "zsh-completions"
 brew "postgresql@17"
 brew "mysql-client"
 brew "valkey"
+brew "flyctl"
 
 # Fonts
 cask "font-jetbrains-mono"
