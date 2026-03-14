@@ -34,19 +34,8 @@ wezterm.on("gui-startup", function(cmd)
 	fit_window_to_screen(window:gui_window())
 end)
 
-local last_screen_width = nil
-local last_screen_height = nil
-
-wezterm.on("window-focus-changed", function(window, pane)
-	if window:is_focused() then
-		local screen = wezterm.gui.screens().active
-		-- 画面サイズが変わった場合にリサイズ
-		if screen.width ~= last_screen_width or screen.height ~= last_screen_height then
-			last_screen_width = screen.width
-			last_screen_height = screen.height
-			fit_window_to_screen(window)
-		end
-	end
+wezterm.on("fit-window-to-screen", function(window)
+	fit_window_to_screen(window)
 end)
 
 -- Tab bar
@@ -132,6 +121,9 @@ config.keys = {
 
 	-- ペインクローズ(Cmd+w)
 	{ key = "w", mods = "CMD", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+
+	-- ウィンドウを画面にフィット(Cmd+Shift+F)
+	{ key = "f", mods = "CMD|SHIFT", action = wezterm.action.EmitEvent("fit-window-to-screen") },
 }
 
 -- パフォーマンス
