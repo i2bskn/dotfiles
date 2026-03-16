@@ -34,12 +34,14 @@ brew "postgresql@17"
 brew "mysql-client"
 brew "valkey"
 brew "flyctl"
+cask "session-manager-plugin"
 
 # Fonts
 cask "font-jetbrains-mono"
 
 # Casks
 cask "appcleaner"
+cask "ijhttp"
 cask "raycast"
 cask "wezterm"
 
