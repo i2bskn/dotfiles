@@ -17,6 +17,8 @@ theme = catppuccin-mocha
 macos-titlebar-style = hidden
 macos-option-as-alt = true
 confirm-close-surface = false
+background-opacity = 0.8
+macos-window-shadow = false
 
 # Shell integration
 shell-integration-features = cursor,sudo,title
