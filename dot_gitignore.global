@@ -11,4 +11,6 @@
 
 .envrc
 
+.claude/settings.local.json
+
 Thumbs.db

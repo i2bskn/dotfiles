@@ -26,6 +26,7 @@ brew "poppler"
 
 # Editor & Shell
 brew "neovim"
+brew "tmux"
 brew "zsh"
 brew "zsh-completions"
 
@@ -41,7 +42,6 @@ cask "font-jetbrains-mono"
 
 # Casks
 cask "appcleaner"
-cask "ijhttp"
+cask "ghostty"
 cask "raycast"
-cask "wezterm"
 

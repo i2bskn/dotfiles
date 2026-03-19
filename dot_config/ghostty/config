@@ -1,0 +1,7 @@
+# Window size and position (match Wezterm: full width, height - 300px, top-left)
+window-width = 9999
+window-height = 38
+window-position-x = 0
+window-position-y = 0
+window-padding-x = 4
+window-padding-y = 4
