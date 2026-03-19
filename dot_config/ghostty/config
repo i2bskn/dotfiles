@@ -3,7 +3,7 @@ window-width = 9999
 window-height = 9999
 window-position-x = 0
 window-position-y = 0
-window-padding-x = 4
+window-padding-x = 8
 window-padding-y = 4
 
 # Font
