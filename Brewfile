@@ -38,7 +38,7 @@ brew "flyctl"
 cask "session-manager-plugin"
 
 # Fonts
-cask "font-jetbrains-mono"
+cask "font-hackgen-nerd"
 
 # Casks
 cask "appcleaner"

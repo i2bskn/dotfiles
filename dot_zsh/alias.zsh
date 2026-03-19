@@ -1,5 +1,6 @@
 alias g="git"
 alias v="nvim"
+alias t="tmux"
 
 alias mkdir="mkdir -p"
 

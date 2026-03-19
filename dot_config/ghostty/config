@@ -1,7 +1,26 @@
 # Window size and position (match Wezterm: full width, height - 300px, top-left)
 window-width = 9999
-window-height = 38
+window-height = 9999
 window-position-x = 0
 window-position-y = 0
 window-padding-x = 4
 window-padding-y = 4
+
+# Font
+font-family = "HackGen Console NF"
+font-size = 14
+
+# Theme
+theme = catppuccin-mocha
+
+# macOS
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+confirm-close-surface = false
+
+# Shell integration
+shell-integration-features = cursor,sudo,title
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
