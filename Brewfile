@@ -26,7 +26,6 @@ brew "poppler"
 
 # Editor & Shell
 brew "neovim"
-brew "tmux"
 brew "zsh"
 brew "zsh-completions"
 

@@ -14,7 +14,7 @@ font-size = 14
 theme = catppuccin-mocha
 
 # macOS
-macos-titlebar-style = hidden
+macos-titlebar-style = tabs
 macos-option-as-alt = true
 confirm-close-surface = false
 background-opacity = 0.8
