@@ -34,3 +34,8 @@ eval "$(starship init zsh)"
 # direnv
 eval "$(direnv hook zsh)"
 
+# Reset kitty keyboard protocol on each prompt to prevent stuck CSI u mode
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _reset_keyboard_protocol
+_reset_keyboard_protocol() { printf '\e[<u\e[<u\e[<u\e[<u\e[<u'; }
+
