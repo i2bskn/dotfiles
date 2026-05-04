@@ -39,8 +39,17 @@ cask "session-manager-plugin"
 cask "font-hackgen-nerd"
 
 # Casks
+cask "1password"
 cask "1password-cli"
 cask "appcleaner"
+cask "claude"
+cask "claude-code"
+cask "cleanshot"
 cask "ghostty"
+cask "linear-linear"
+cask "mimestream"
+cask "notion"
+cask "slack"
+cask "orbstack"
 cask "raycast"
 
