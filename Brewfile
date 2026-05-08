@@ -23,6 +23,7 @@ brew "openssl@3"
 brew "libyaml"
 brew "typst"
 brew "poppler"
+brew "go"
 
 # Editor & Shell
 brew "neovim"
@@ -30,6 +31,7 @@ brew "zsh"
 brew "zsh-completions"
 
 # Databases & Infrastructure
+brew "awscli"
 brew "postgresql@17"
 brew "mysql-client"
 brew "valkey"
