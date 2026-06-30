@@ -1,8 +1,9 @@
 alias g="git"
 alias v="nvim"
-alias t="tmux"
 
 alias mkdir="mkdir -p"
+
+alias cot="open -a CotEditor"
 
 if which eza > /dev/null 2>&1; then
   alias ls="eza --icons --group-directories-first"

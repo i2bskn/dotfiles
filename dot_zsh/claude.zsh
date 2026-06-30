@@ -1,0 +1,2 @@
+export CLAUDE_CODE_EFFORT_LEVEL=xhigh
+

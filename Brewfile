@@ -6,6 +6,7 @@ brew "ghq"
 brew "git"
 brew "go"
 brew "mise"
+brew "node"
 brew "starship"
 
 # Modern CLI Utilities
@@ -46,8 +47,8 @@ cask "1password-cli"
 cask "appcleaner"
 cask "cleanshot"
 cask "coteditor"
+cask "gcloud-cli"
 cask "ghostty"
-cask "karabiner-elements"
 cask "orbstack"
 cask "raycast"
 

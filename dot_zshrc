@@ -43,7 +43,15 @@ if [ -d "/opt/homebrew/opt/mysql-client/bin" ]; then
 fi
 
 # Reset kitty keyboard protocol on each prompt to prevent stuck CSI u mode
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _reset_keyboard_protocol
-_reset_keyboard_protocol() { printf '\e[<u\e[<u\e[<u\e[<u\e[<u'; }
+#autoload -Uz add-zsh-hook
+#add-zsh-hook precmd _reset_keyboard_protocol
+#_reset_keyboard_protocol() { printf '\e[<u\e[<u\e[<u\e[<u\e[<u'; }
+
+# grok
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+
+# opencode
+export PATH=/Users/i2bskn/.opencode/bin:$PATH
 
